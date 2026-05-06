@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Global Market</title>
+  <link rel="shortcut icon" href="./dashboard _ Capital Trade market_files/favicon.png" />
+  <link href="./dashboard _ Capital Trade market_files/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="./dashboard _ Capital Trade market_files/icons.min.css" rel="stylesheet" type="text/css" />
+  <link href="./dashboard _ Capital Trade market_files/app.min.css" rel="stylesheet" type="text/css" />
+  <link href="./dashboard _ Capital Trade market_files/custom.min.css" rel="stylesheet" type="text/css" />
+  <link href="./dashboard _ Capital Trade market_files/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="./dashboard _ Capital Trade market_files/all.min.css" />
+  <link rel="stylesheet" href="./dashboard _ Capital Trade market_files/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-dim: rgba(201, 168, 76, 0.14);
+      --ink: #080c10;
+      --ink-soft: #10161d;
+      --ink-panel: #151d25;
+      --ink-panel-2: #1c2731;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #e2e8f0;
+      --muted: #92a3b4;
+      --success: #7ff3ae;
+      --danger: #fda4af;
+      --radius: 14px;
+      --shadow: 0 26px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: radial-gradient(circle at top, rgba(201, 168, 76, 0.12), transparent 30%), var(--ink);
+      color: var(--text);
+      overflow-x: hidden;
+      top: 0 !important;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .goog-te-banner-frame,
+    .goog-logo-link,
+    .goog-te-gadget span,
+    #goog-gt-tt,
+    .goog-tooltip,
+    .goog-tooltip:hover,
+    .goog-text-highlight {
+      display: none !important;
+      visibility: hidden !important;
+    }
+
+    body > .skiptranslate { display: none !important; }
+
+    #google_language_translator select {
+      width: 100%;
+      background: #0d1318;
+      color: var(--text);
+      border: 1px solid rgba(201, 168, 76, 0.28);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+    }
+
+    #processLoader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: url(/server/assets/images/preloader.gif) center center no-repeat rgba(7, 10, 14, 0.82);
+      transition: opacity 0.3s ease;
+    }
+
+    .dashboard-app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+    }
+
+    .dashboard-sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 18px 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+      border-right: 1px solid rgba(201, 168, 76, 0.14);
+      backdrop-filter: blur(12px);
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 18px;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 10px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 6px;
+    }
+
+    .brand-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-title span { color: var(--gold); }
+
+    .sidebar-scroll {
+      min-height: 0;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .nav-section {
+      margin-bottom: 20px;
+    }
+
+    .nav-section-title {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0 12px 10px;
+      font-weight: 700;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-link-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-link-item:hover,
+    .nav-link-item.is-active {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(201, 168, 76, 0.18);
+      transform: translateX(2px);
+    }
+
+    .nav-link-item i {
+      width: 18px;
+      text-align: center;
+      color: var(--gold);
+    }
+
+    .sidebar-card {
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(160deg, rgba(201,168,76,0.18), rgba(255,255,255,0.02));
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .sidebar-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .sidebar-card-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .action-link,
+    .utility-button,
+    .primary-button,
+    .secondary-button,
+    .ghost-button,
+    .toolbar-button,
+    .table-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .action-link:hover,
+    .utility-button:hover,
+    .primary-button:hover,
+    .secondary-button:hover,
+    .ghost-button:hover,
+    .toolbar-button:hover,
+    .table-button:hover { transform: translateY(-1px); }
+
+    .primary-button {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--ink);
+      box-shadow: 0 14px 28px rgba(201, 168, 76, 0.22);
+    }
+
+    .secondary-button,
+    .ghost-button,
+    .toolbar-button,
+    .utility-button,
+    .action-link {
+      background: transparent;
+      border-color: rgba(201, 168, 76, 0.24);
+      color: var(--gold);
+    }
+
+    .dashboard-content {
+      min-width: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 15;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 28px;
+      background: rgba(8, 12, 16, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .sidebar-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      background: transparent;
+      color: var(--gold);
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .topbar-copy h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      margin: 0 0 4px;
+    }
+
+    .topbar-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 720px;
+    }
+
+    .topbar-tools {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .topbar-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .topbar-chip strong { color: var(--text); }
+
+    .profile-wrap { position: relative; }
+
+    .profile-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px 8px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .profile-button img {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(201, 168, 76, 0.24);
+    }
+
+    .profile-menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      min-width: 220px;
+      display: none;
+      padding: 10px;
+      border-radius: 16px;
+      background: rgba(8, 12, 16, 0.96);
+      border: 1px solid rgba(201, 168, 76, 0.24);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-menu.is-open { display: grid; gap: 6px; }
+
+    .profile-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: var(--muted);
+    }
+
+    .profile-menu a:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+
+    .dashboard-main {
+      padding: 28px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+    }
+
+    .panel {
+      border-radius: 20px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .panel-kicker {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .panel h2,
+    .panel h3 {
+      font-family: 'Syne', sans-serif;
+      margin: 0;
+    }
+
+    .panel-copy {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+
+    .balance-shell {
+      display: grid;
+      gap: 18px;
+    }
+
+    .balance-value {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(40px, 5vw, 58px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin: 6px 0;
+    }
+
+    .balance-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-stat {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+    }
+
+    .mini-stat-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .mini-stat-label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    #portfolioChart,
+    #allocationChart {
+      min-height: 260px;
+    }
+
+    .asset-swiper .swiper-slide {
+      height: auto;
+    }
+
+    .asset-card {
+      height: 100%;
+      padding: 20px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      display: grid;
+      gap: 16px;
+    }
+
+    .asset-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .asset-symbol {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gold-dim);
+      color: var(--gold);
+      border: 1px solid rgba(201, 168, 76, 0.24);
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+
+    .asset-change {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .asset-change.is-up {
+      color: var(--success);
+      background: rgba(14, 116, 64, 0.2);
+    }
+
+    .asset-change.is-down {
+      color: var(--danger);
+      background: rgba(159, 18, 57, 0.2);
+    }
+
+    .asset-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 21px;
+      margin: 0;
+    }
+
+    .asset-card p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .asset-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      color: var(--gold);
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .field-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .input,
+    .select,
+    .choices__inner {
+      width: 100%;
+      min-height: 50px;
+      border-radius: 12px;
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      padding: 12px 14px;
+      font: inherit;
+      outline: none;
+    }
+
+    .input::placeholder { color: var(--muted); }
+
+    .choices[data-type*='select-one']::after {
+      border-color: var(--gold) transparent transparent;
+      right: 16px;
+    }
+
+    .choices__inner {
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+    }
+
+    .choices__list--single { padding: 0; }
+
+    .choices__list--dropdown,
+    .choices__list[aria-expanded] {
+      background: #10161d;
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      border-radius: 12px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .choices__list--dropdown .choices__item,
+    .choices__list[aria-expanded] .choices__item {
+      padding: 12px 14px;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .choices__list--dropdown .choices__item--selectable.is-highlighted,
+    .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+      background: rgba(201, 168, 76, 0.12);
+    }
+
+    .wallet-copy {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+    }
+
+    .wallet-copy code {
+      flex: 1 1 200px;
+      margin: 0;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.22);
+      color: var(--gold-light);
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .allocation-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+    }
+
+    .status-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .status-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+    }
+
+    .status-list li:last-child { border-bottom: none; }
+
+    .status-list strong { color: var(--text); }
+
+    .table-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .table-search {
+      width: min(320px, 100%);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    .table-search::placeholder { color: var(--muted); }
+
+    .transactions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .transactions-table th,
+    .transactions-table td {
+      text-align: left;
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .transactions-table th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .transactions-table td { color: var(--text); }
+
+    .table-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .table-status.pending {
+      color: var(--gold);
+      background: rgba(201, 168, 76, 0.12);
+    }
+
+    .table-status.success {
+      color: var(--success);
+      background: rgba(14, 116, 64, 0.18);
+    }
+
+    .table-status.review {
+      color: #93c5fd;
+      background: rgba(37, 99, 235, 0.18);
+    }
+
+    .pagination.listjs-pagination {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+    }
+
+    .pagination.listjs-pagination:empty { display: none; }
+
+    .pagination.listjs-pagination li a {
+      display: inline-flex;
+      min-width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0 10px;
+    }
+
+    .pagination.listjs-pagination li.active a {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--ink);
+      border-color: transparent;
+    }
+
+    .widget-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .widget-card {
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      box-shadow: var(--shadow);
+    }
+
+    .widget-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      margin: 0 0 14px;
+    }
+
+    .widget-card .tradingview-widget-container { min-height: 220px; }
+
+    .utility-rail {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    #translate-panel {
+      width: min(320px, calc(100vw - 36px));
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(8, 12, 16, 0.96);
+      border: 1px solid rgba(201, 168, 76, 0.24);
+      box-shadow: var(--shadow);
+      display: none;
+    }
+
+    #translate-panel.is-open { display: block; }
+
+    #translate-panel p {
+      color: var(--muted);
+      margin: 0 0 12px;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    .toastify {
+      padding: 14px 18px;
+      border-radius: 12px;
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(201,168,76,0.96), rgba(147, 115, 32, 0.96));
+      box-shadow: var(--shadow);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1200px) {
+      .summary-grid,
+      .workflow-grid,
+      .allocation-grid,
+      .widget-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-stats { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 980px) {
+      .dashboard-app { grid-template-columns: 1fr; }
+
+      .dashboard-sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: min(320px, 86vw);
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        box-shadow: var(--shadow);
+      }
+
+      body.sidebar-open .dashboard-sidebar { transform: translateX(0); }
+      .sidebar-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .topbar { padding: 18px; }
+      .dashboard-main { padding: 18px; }
+    }
+
+    @media (max-width: 760px) {
+      .topbar,
+      .panel,
+      .widget-card,
+      .sidebar-card { padding-left: 18px; padding-right: 18px; }
+      .topbar-tools,
+      .hero-actions,
+      .action-row { width: 100%; justify-content: stretch; }
+      .primary-button,
+      .secondary-button,
+      .ghost-button,
+      .toolbar-button,
+      .table-button { width: 100%; }
+      .transactions-table { display: block; overflow-x: auto; }
+    }
+  </style>
+  <script>
+    var base_url = '/server/';
+  </script>
+</head>
+<body>
+  <div id="processLoader"></div>
+
+  <div class="dashboard-app">
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <a class="brand" href="/server/dashboard">
+        <img src="./dashboard _ Capital Trade market_files/e606276ddd121d178ab603e88931c962.png" alt="Global Market" />
+        <div class="brand-title">Global <span>Market</span><br />Dashboard</div>
+      </a>
+
+      <div class="sidebar-scroll" data-simplebar>
+        <section class="nav-section">
+          <div class="nav-section-title">Overview</div>
+          <ul class="nav-list">
+            <li><a class="nav-link-item is-active" href="/server/dashboard"><i class="fas fa-chart-pie"></i><span>Dashboard</span></a></li>
+            <li><a class="nav-link-item" href="/server/wallet"><i class="fas fa-wallet"></i><span>My Wallet</span></a></li>
+            <li><a class="nav-link-item" href="/server/history"><i class="fas fa-clock-rotate-left"></i><span>History</span></a></li>
+          </ul>
+        </section>
+
+        <section class="nav-section">
+          <div class="nav-section-title">Earn</div>
+          <ul class="nav-list">
+            <li><a class="nav-link-item" href="/server/mine"><i class="fas fa-microchip"></i><span>Mine</span></a></li>
+            <li><a class="nav-link-item" href="/server/portfolio"><i class="fas fa-chart-line"></i><span>Trade</span></a></li>
+            <li><a class="nav-link-item" href="/server/invest"><i class="fas fa-arrow-trend-up"></i><span>Invest</span></a></li>
+          </ul>
+        </section>
+
+        <section class="nav-section">
+          <div class="nav-section-title">Funds</div>
+          <ul class="nav-list">
+            <li><a class="nav-link-item" href="/server/topup"><i class="fas fa-arrow-down"></i><span>Top Up</span></a></li>
+            <li><a class="nav-link-item" href="/server/withdraw"><i class="fas fa-arrow-up-right-dots"></i><span>Withdraw</span></a></li>
+          </ul>
+        </section>
+
+        <section class="nav-section">
+          <div class="nav-section-title">Account</div>
+          <ul class="nav-list">
+            <li><a class="nav-link-item" href="/server/user_settings"><i class="fas fa-user-gear"></i><span>Settings</span></a></li>
+            <li><a class="nav-link-item" href="/server/user_settings/kyc"><i class="fas fa-id-card"></i><span>KYC Verification</span></a></li>
+            <li><a class="nav-link-item" href="/server/notifications"><i class="fas fa-bell"></i><span>Notifications</span></a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Restore old integrations</h3>
+        <p>This dashboard keeps the previous routes, adds back market widgets, translation, live chat, and preserves the utility libraries from the older dashboard shell.</p>
+        <div class="sidebar-card-actions">
+          <a class="action-link" href="/server/">Install App</a>
+          <button class="utility-button" id="sidebarTranslateToggle" type="button">Translate</button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dashboard-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle" id="sidebarToggle" type="button"><i class="fas fa-bars"></i></button>
+          <div class="topbar-copy">
+            <h1>Account Dashboard</h1>
+            <p>The dashboard now matches the same gold and graphite visual system as the landing page while keeping your original account, portfolio, funding, and settings routes intact.</p>
+          </div>
+        </div>
+        <div class="topbar-tools">
+          <div class="topbar-chip"><span>Base URL</span><strong>/server/</strong></div>
+          <a class="toolbar-button" href="/server/notifications">Notifications</a>
+          <button class="toolbar-button" id="topbarTranslateToggle" type="button">Translate</button>
+          <div class="profile-wrap">
+            <button class="profile-button" id="profileToggle" type="button">
+              <img src="./dashboard _ Capital Trade market_files/default.png" alt="Avatar" />
+              <span>My Account</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="profile-menu" id="profileMenu">
+              <a href="/server/user_settings"><i class="fas fa-user"></i><span>Profile</span></a>
+              <a href="/server/notifications"><i class="fas fa-message"></i><span>Messages</span></a>
+              <a href="/server/user_settings"><i class="fas fa-gear"></i><span>Settings</span></a>
+              <a href="/server/login/logout/38d4203b5b2c8fd6ff3119d43c63730c"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-main">
+        <section class="summary-grid">
+          <article class="panel">
+            <div class="balance-shell">
+              <div>
+                <div class="panel-kicker">Live account balance</div>
+                <h2 class="balance-value">$0.00</h2>
+                <div class="balance-meta">
+                  <span>Total balance</span>
+                  <span>Updated 14:35:21</span>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <div class="mini-stat">
+                  <div class="mini-stat-value">$0.00</div>
+                  <div class="mini-stat-label">Total deposits</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-value">0.00</div>
+                  <div class="mini-stat-label">Total withdrawals</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-value">$20M+</div>
+                  <div class="mini-stat-label">Market volume</div>
+                </div>
+              </div>
+              <p class="panel-copy">These values stay aligned to the previous dashboard snapshot while the interface around them is rebuilt in the same design language as the landing page and root page.</p>
+              <div class="hero-actions">
+                <a href="/server/topup" class="primary-button">Deposit Funds</a>
+                <a href="/server/withdraw" class="secondary-button">Withdraw</a>
+                <button class="ghost-button" id="downloadReport" type="button">Get Report</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-kicker">ApexCharts integration</div>
+                <h3>Portfolio performance</h3>
+              </div>
+              <span class="topbar-chip"><strong>24H</strong><span>tracked window</span></span>
+            </div>
+            <div id="portfolioChart"></div>
+          </article>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-kicker">Swiper integration</div>
+              <h3>Markets in motion</h3>
+            </div>
+            <a class="toolbar-button" href="/server/portfolio">Open portfolio</a>
+          </div>
+          <div class="swiper asset-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a class="asset-card" href="/server/portfolio/details/btc">
+                  <div class="asset-card-top">
+                    <span class="asset-symbol">BTC</span>
+                    <span class="asset-change is-down">-1.57%</span>
+                  </div>
+                  <div>
+                    <h3>Bitcoin</h3>
+                    <p>BTC / USD</p>
+                  </div>
+                  <div class="asset-price">$62,780.33</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="asset-card" href="/server/portfolio/details/eth">
+                  <div class="asset-card-top">
+                    <span class="asset-symbol">ETH</span>
+                    <span class="asset-change is-down">-2.17%</span>
+                  </div>
+                  <div>
+                    <h3>Ethereum</h3>
+                    <p>ETH / USD</p>
+                  </div>
+                  <div class="asset-price">$2,308.07</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="asset-card" href="/server/portfolio/details/usdt">
+                  <div class="asset-card-top">
+                    <span class="asset-symbol">USDT</span>
+                    <span class="asset-change is-down">-0.04%</span>
+                  </div>
+                  <div>
+                    <h3>USDT TRC20</h3>
+                    <p>USDT / USD</p>
+                  </div>
+                  <div class="asset-price">$1.00</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="asset-card" href="/server/portfolio/details/trx">
+                  <div class="asset-card-top">
+                    <span class="asset-symbol">TRX</span>
+                    <span class="asset-change is-up">0.00%</span>
+                  </div>
+                  <div>
+                    <h3>Tron</h3>
+                    <p>TRX / USD</p>
+                  </div>
+                  <div class="asset-price">$0.00</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="asset-card" href="/server/portfolio/details/sol">
+                  <div class="asset-card-top">
+                    <span class="asset-symbol">SOL</span>
+                    <span class="asset-change is-up">0.00%</span>
+                  </div>
+                  <div>
+                    <h3>Solana</h3>
+                    <p>SOL / USD</p>
+                  </div>
+                  <div class="asset-price">$0.00</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="asset-card" href="/server/portfolio/details/ltc">
+                  <div class="asset-card-top">
+                    <span class="asset-symbol">LTC</span>
+                    <span class="asset-change is-up">0.00%</span>
+                  </div>
+                  <div>
+                    <h3>Litecoin</h3>
+                    <p>LTC / USD</p>
+                  </div>
+                  <div class="asset-price">$0.00</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="asset-card" href="/server/portfolio/details/xrp">
+                  <div class="asset-card-top">
+                    <span class="asset-symbol">XRP</span>
+                    <span class="asset-change is-up">0.00%</span>
+                  </div>
+                  <div>
+                    <h3>XRP</h3>
+                    <p>XRP / USD</p>
+                  </div>
+                  <div class="asset-price">$0.00</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a class="asset-card" href="/server/portfolio/details/bch">
+                  <div class="asset-card-top">
+                    <span class="asset-symbol">BCH</span>
+                    <span class="asset-change is-up">0.00%</span>
+                  </div>
+                  <div>
+                    <h3>Bitcoin Cash</h3>
+                    <p>BCH / USD</p>
+                  </div>
+                  <div class="asset-price">$0.00</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="workflow-grid">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-kicker">Choices + Clipboard</div>
+                <h3>Wallet actions</h3>
+              </div>
+              <a class="toolbar-button" href="/server/wallet">Open wallet</a>
+            </div>
+            <div class="field-grid">
+              <div>
+                <label class="label" for="walletAsset">Select wallet</label>
+                <select id="walletAsset" class="select">
+                  <option value="BTC">BTC</option>
+                  <option value="ETH">ETH</option>
+                  <option value="LTC">LTC</option>
+                  <option value="SOL">SOL</option>
+                  <option value="TRX">TRX</option>
+                  <option value="USDT">USDT</option>
+                  <option value="XRP">XRP</option>
+                </select>
+              </div>
+              <div class="wallet-copy">
+                <code id="walletAddress">GM-38D42-02FD-COPY-ADDRESS</code>
+                <button class="secondary-button copy-wallet" type="button" data-clipboard-target="#walletAddress">Copy Address</button>
+              </div>
+              <div class="action-row">
+                <a class="primary-button" href="/server/topup">Deposit</a>
+                <a class="secondary-button" href="/server/withdraw">Withdraw</a>
+                <button class="ghost-button" type="button" data-support="true">Open Support</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-kicker">Flatpickr + SweetAlert</div>
+                <h3>Schedule a transfer</h3>
+              </div>
+              <a class="toolbar-button" href="/server/history">View history</a>
+            </div>
+            <div class="field-grid">
+              <div>
+                <label class="label" for="transferAsset">Transfer asset</label>
+                <select id="transferAsset" class="select">
+                  <option value="BTC">BTC</option>
+                  <option value="ETH">ETH</option>
+                  <option value="USDT">USDT</option>
+                  <option value="TRX">TRX</option>
+                  <option value="SOL">SOL</option>
+                </select>
+              </div>
+              <div>
+                <label class="label" for="transferAmount">Amount</label>
+                <input id="transferAmount" class="input" type="text" placeholder="0.00" />
+              </div>
+              <div>
+                <label class="label" for="scheduledDate">Execution date</label>
+                <input id="scheduledDate" class="input" type="text" placeholder="Select date" />
+              </div>
+              <button class="primary-button" id="scheduleTransfer" type="button">Schedule transfer</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="allocation-grid">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-kicker">Allocation</div>
+                <h3>Capital distribution</h3>
+              </div>
+              <span class="topbar-chip"><strong>4</strong><span>active lanes</span></span>
+            </div>
+            <div id="allocationChart"></div>
+            <ul class="status-list">
+              <li><span>Bitcoin reserve</span><strong>42%</strong></li>
+              <li><span>Ethereum reserve</span><strong>24%</strong></li>
+              <li><span>Stablecoin balance</span><strong>18%</strong></li>
+              <li><span>Alt exposure</span><strong>16%</strong></li>
+            </ul>
+          </article>
+
+          <article class="panel" id="transactionsList">
+            <div class="table-toolbar">
+              <div>
+                <div class="panel-kicker">List.js</div>
+                <h3>Recent transactions</h3>
+              </div>
+              <input class="table-search search" type="search" placeholder="Search asset, status, or type" />
+            </div>
+            <div class="table-responsive">
+              <table class="transactions-table">
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody class="list">
+                  <tr>
+                    <td class="asset">BTC</td>
+                    <td class="amount">$2,450.00</td>
+                    <td class="status"><span class="table-status success">Approved</span></td>
+                    <td class="type">Deposit</td>
+                    <td><a class="table-button" href="/server/history">Details</a></td>
+                  </tr>
+                  <tr>
+                    <td class="asset">ETH</td>
+                    <td class="amount">$900.00</td>
+                    <td class="status"><span class="table-status pending">Pending</span></td>
+                    <td class="type">Withdrawal</td>
+                    <td><a class="table-button" href="/server/history">Details</a></td>
+                  </tr>
+                  <tr>
+                    <td class="asset">USDT</td>
+                    <td class="amount">$5,100.00</td>
+                    <td class="status"><span class="table-status review">Review</span></td>
+                    <td class="type">Investment</td>
+                    <td><a class="table-button" href="/server/history">Details</a></td>
+                  </tr>
+                  <tr>
+                    <td class="asset">TRX</td>
+                    <td class="amount">$730.00</td>
+                    <td class="status"><span class="table-status success">Approved</span></td>
+                    <td class="type">Top Up</td>
+                    <td><a class="table-button" href="/server/history">Details</a></td>
+                  </tr>
+                  <tr>
+                    <td class="asset">SOL</td>
+                    <td class="amount">$1,260.00</td>
+                    <td class="status"><span class="table-status pending">Pending</span></td>
+                    <td class="type">Trade</td>
+                    <td><a class="table-button" href="/server/history">Details</a></td>
+                  </tr>
+                  <tr>
+                    <td class="asset">BCH</td>
+                    <td class="amount">$640.00</td>
+                    <td class="status"><span class="table-status success">Approved</span></td>
+                    <td class="type">Mining</td>
+                    <td><a class="table-button" href="/server/history">Details</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ul class="pagination listjs-pagination"></ul>
+          </article>
+        </section>
+
+        <section class="widget-grid">
+          <article class="widget-card">
+            <h3>Bitcoin Desk</h3>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {
+                "symbol": "BINANCE:BTCUSDT",
+                "width": "100%",
+                "height": 220,
+                "locale": "en",
+                "dateRange": "12M",
+                "colorTheme": "dark",
+                "trendLineColor": "rgba(201, 168, 76, 1)",
+                "underLineColor": "rgba(201, 168, 76, 0.24)",
+                "underLineBottomColor": "rgba(201, 168, 76, 0)",
+                "isTransparent": true,
+                "autosize": false,
+                "largeChartUrl": ""
+              }
+              </script>
+            </div>
+          </article>
+          <article class="widget-card">
+            <h3>Ethereum Desk</h3>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {
+                "symbol": "BINANCE:ETHUSDT",
+                "width": "100%",
+                "height": 220,
+                "locale": "en",
+                "dateRange": "12M",
+                "colorTheme": "dark",
+                "trendLineColor": "rgba(201, 168, 76, 1)",
+                "underLineColor": "rgba(201, 168, 76, 0.24)",
+                "underLineBottomColor": "rgba(201, 168, 76, 0)",
+                "isTransparent": true,
+                "autosize": false,
+                "largeChartUrl": ""
+              }
+              </script>
+            </div>
+          </article>
+          <article class="widget-card">
+            <h3>BNB Desk</h3>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {
+                "symbol": "BINANCE:BNBUSDT",
+                "width": "100%",
+                "height": 220,
+                "locale": "en",
+                "dateRange": "12M",
+                "colorTheme": "dark",
+                "trendLineColor": "rgba(201, 168, 76, 1)",
+                "underLineColor": "rgba(201, 168, 76, 0.24)",
+                "underLineBottomColor": "rgba(201, 168, 76, 0)",
+                "isTransparent": true,
+                "autosize": false,
+                "largeChartUrl": ""
+              }
+              </script>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="utility-rail">
+    <div id="translate-panel">
+      <p>Select a language using the restored Google Translate integration from the original site.</p>
+      <div id="google_language_translator"></div>
+    </div>
+    <button class="utility-button" id="floatingTranslateToggle" type="button">Translate</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.7/dist/simplebar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    (function () {
+      var loader = document.getElementById('processLoader');
+      window.addEventListener('load', function () {
+        if (loader) {
+          loader.style.opacity = '0';
+          setTimeout(function () {
+            loader.style.display = 'none';
+          }, 320);
+        }
+      });
+
+      var sidebarToggle = document.getElementById('sidebarToggle');
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', function () {
+          document.body.classList.toggle('sidebar-open');
+        });
+      }
+
+      function toggleTranslatePanel() {
+        var panel = document.getElementById('translate-panel');
+        if (panel) {
+          panel.classList.toggle('is-open');
+        }
+      }
+
+      ['floatingTranslateToggle', 'topbarTranslateToggle', 'sidebarTranslateToggle'].forEach(function (id) {
+        var node = document.getElementById(id);
+        if (node) {
+          node.addEventListener('click', toggleTranslatePanel);
+        }
+      });
+
+      document.addEventListener('click', function (event) {
+        var panel = document.getElementById('translate-panel');
+        var triggers = ['floatingTranslateToggle', 'topbarTranslateToggle', 'sidebarTranslateToggle']
+          .map(function (id) { return document.getElementById(id); })
+          .filter(Boolean);
+
+        if (panel && !panel.contains(event.target) && triggers.every(function (node) { return node !== event.target; })) {
+          panel.classList.remove('is-open');
+        }
+      });
+
+      var profileToggle = document.getElementById('profileToggle');
+      var profileMenu = document.getElementById('profileMenu');
+      if (profileToggle && profileMenu) {
+        profileToggle.addEventListener('click', function (event) {
+          event.stopPropagation();
+          profileMenu.classList.toggle('is-open');
+        });
+        document.addEventListener('click', function (event) {
+          if (!profileMenu.contains(event.target) && event.target !== profileToggle) {
+            profileMenu.classList.remove('is-open');
+          }
+        });
+      }
+
+      if (typeof Swiper !== 'undefined') {
+        new Swiper('.asset-swiper', {
+          speed: 1200,
+          spaceBetween: 16,
+          autoplay: { delay: 2600 },
+          breakpoints: {
+            320: { slidesPerView: 1.1 },
+            760: { slidesPerView: 2.1 },
+            1200: { slidesPerView: 3.1 }
+          }
+        });
+      }
+
+      if (typeof Choices !== 'undefined') {
+        new Choices('#walletAsset', { searchEnabled: false, itemSelectText: '' });
+        new Choices('#transferAsset', { searchEnabled: false, itemSelectText: '' });
+      }
+
+      if (typeof flatpickr !== 'undefined') {
+        flatpickr('#scheduledDate', {
+          dateFormat: 'Y-m-d',
+          minDate: 'today'
+        });
+      }
+
+      function showToast(message) {
+        if (typeof Toastify !== 'undefined') {
+          Toastify({ text: message, duration: 2800, gravity: 'bottom', position: 'right', stopOnFocus: true }).showToast();
+        }
+      }
+
+      if (typeof ClipboardJS !== 'undefined') {
+        var clipboard = new ClipboardJS('.copy-wallet');
+        clipboard.on('success', function () {
+          showToast('Wallet address copied successfully');
+        });
+      }
+
+      if (typeof ApexCharts !== 'undefined') {
+        var portfolioChart = new ApexCharts(document.querySelector('#portfolioChart'), {
+          chart: {
+            type: 'area',
+            height: 280,
+            toolbar: { show: false },
+            background: 'transparent'
+          },
+          series: [{
+            name: 'Portfolio value',
+            data: [4.8, 5.2, 4.9, 5.6, 5.1, 5.9, 6.3, 6.1, 6.8, 7.1, 6.9, 7.4]
+          }],
+          stroke: { curve: 'smooth', width: 3 },
+          fill: {
+            type: 'gradient',
+            gradient: {
+              shadeIntensity: 1,
+              opacityFrom: 0.42,
+              opacityTo: 0.02
+            }
+          },
+          colors: ['#c9a84c'],
+          grid: { borderColor: 'rgba(255,255,255,0.08)' },
+          xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            labels: { style: { colors: '#92a3b4' } }
+          },
+          yaxis: { labels: { style: { colors: '#92a3b4' } } },
+          tooltip: { theme: 'dark' },
+          legend: { show: false }
+        });
+        portfolioChart.render();
+
+        var allocationChart = new ApexCharts(document.querySelector('#allocationChart'), {
+          chart: {
+            type: 'donut',
+            height: 260,
+            background: 'transparent'
+          },
+          series: [42, 24, 18, 16],
+          labels: ['Bitcoin', 'Ethereum', 'Stablecoins', 'Altcoins'],
+          colors: ['#c9a84c', '#f0cd76', '#7d8b98', '#42515f'],
+          legend: {
+            position: 'bottom',
+            labels: { colors: '#e2e8f0' }
+          },
+          dataLabels: { enabled: false },
+          stroke: { colors: ['#080c10'] }
+        });
+        allocationChart.render();
+      }
+
+      if (typeof List !== 'undefined') {
+        new List('transactionsList', {
+          valueNames: ['asset', 'amount', 'status', 'type']
+        });
+      }
+
+      var reportButton = document.getElementById('downloadReport');
+      if (reportButton) {
+        reportButton.addEventListener('click', function () {
+          showToast('Report export has been queued');
+        });
+      }
+
+      document.querySelectorAll('[data-support="true"]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          if (typeof Swal !== 'undefined') {
+            Swal.fire({
+              title: 'Support integration restored',
+              text: 'Live chat is enabled again through Smartsupp, and contact routes still point to the original project.',
+              icon: 'success',
+              confirmButtonColor: '#c9a84c',
+              background: '#10161d',
+              color: '#e2e8f0'
+            });
+          }
+        });
+      });
+
+      var scheduleTransfer = document.getElementById('scheduleTransfer');
+      if (scheduleTransfer) {
+        scheduleTransfer.addEventListener('click', function () {
+          var amount = document.getElementById('transferAmount');
+          var date = document.getElementById('scheduledDate');
+          var message = 'Transfer request queued';
+          if (amount && amount.value) {
+            message += ' for ' + amount.value;
+          }
+          if (date && date.value) {
+            message += ' on ' + date.value;
+          }
+          showToast(message);
+        });
+      }
+    }());
+
+    function GoogleLanguageTranslatorInit() {
+      if (!window.google || !window.google.translate) {
+        return;
+      }
+      new window.google.translate.TranslateElement({
+        pageLanguage: 'en',
+        autoDisplay: false,
+        includedLanguages: 'af,sq,am,ar,hy,az,eu,be,bn,bs,bg,ca,ceb,ny,zh-CN,zh-TW,co,hr,cs,da,nl,en,eo,et,tl,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,iw,hi,hmn,hu,is,ig,id,ga,it,ja,jw,kn,kk,km,ko,ku,ky,lo,la,lv,lt,lb,mk,mg,ml,ms,mt,mi,mr,mn,my,ne,no,ps,fa,pl,pt,pa,ro,ru,sr,sn,st,sd,si,sk,sl,sm,gd,so,es,su,sw,sv,tg,ta,te,th,tr,uk,ur,uz,vi,cy,xh,yi,yo,zu'
+      }, 'google_language_translator');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=GoogleLanguageTranslatorInit"></script>
+  <script>
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '5fd4930c27a59c7ea8e9f62211c10dd41c54db5e';
+    window.smartsupp = window.smartsupp || (function (documentRef) {
+      var api = function () { api._.push(arguments); };
+      api._ = [];
+      var firstScript = documentRef.getElementsByTagName('script')[0];
+      var script = documentRef.createElement('script');
+      script.type = 'text/javascript';
+      script.charset = 'utf-8';
+      script.async = true;
+      script.src = 'https://www.smartsuppchat.com/loader.js?';
+      firstScript.parentNode.insertBefore(script, firstScript);
+      return api;
+    }(document));
+  </script>
+</body>
+</html>
