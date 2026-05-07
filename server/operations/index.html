@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operations | Ivory Capital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/ivory-site.css" />
+</head>
+<body>
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar">
+      <div class="dashboard-brand">
+        <a class="brand-lockup" href="../../">
+          <span class="brand-mark">IC</span>
+          <span class="brand-copy"><strong>Ivory Capital</strong><span>Operations desk</span></span>
+        </a>
+      </div>
+      <div class="dashboard-sidebar-scroll">
+        <div class="sidebar-section-title">Overview</div>
+        <nav class="sidebar-links">
+          <a class="dashboard-link" href="../dashboard/"><span class="dot"></span><span>Dashboard</span></a>
+          <a class="dashboard-link" href="../wallet/"><span class="dot"></span><span>Wallet</span></a>
+          <a class="dashboard-link" href="../history/"><span class="dot"></span><span>History</span></a>
+          <a class="dashboard-link" href="../mine/"><span class="dot"></span><span>Mine</span></a>
+          <a class="dashboard-link" href="../portfolio/"><span class="dot"></span><span>Portfolio</span></a>
+          <a class="dashboard-link" href="../invest/"><span class="dot"></span><span>Invest</span></a>
+          <a class="dashboard-link" href="../topup/"><span class="dot"></span><span>Top up</span></a>
+          <a class="dashboard-link" href="../withdraw/"><span class="dot"></span><span>Withdraw</span></a>
+          <a class="dashboard-link" href="../user_settings/"><span class="dot"></span><span>Settings</span></a>
+          <a class="dashboard-link" href="../user_settings/kyc/"><span class="dot"></span><span>KYC</span></a>
+          <a class="dashboard-link" href="../notifications/"><span class="dot"></span><span>Notifications</span></a>
+          <a class="dashboard-link is-active" href="../operations/"><span class="dot"></span><span>Operations</span></a>
+        </nav>
+      </div>
+      <div class="sidebar-promo">
+        <div class="eyebrow">Control center</div>
+        <h3 style="margin-bottom:10px;">Approve live requests and clear alerts from one route.</h3>
+        <p class="form-note">This desk mirrors the same Neon-backed account data used across wallet, history, and notifications.</p>
+      </div>
+    </aside>
+    <div class="dashboard-content">
+      <header class="dashboard-topbar">
+        <div class="dashboard-topbar-inner">
+          <div>
+            <h1>Operations desk</h1>
+            <p>Review pending withdrawals, unread notifications, and integration readiness from a dedicated back-office view.</p>
+          </div>
+        </div>
+      </header>
+      <main class="dashboard-main">
+        <section class="split-grid">
+          <article class="panel" data-operations-overview>
+            <div class="panel-kicker">Operations snapshot</div>
+            <h2>Back-office controls</h2>
+            <p>Pending approvals, notification state, and ledger references will load here from your Neon-backed account.</p>
+          </article>
+          <article class="panel" data-operations-integrations>
+            <div class="panel-kicker">Neon integration</div>
+            <h3>Loading integration state</h3>
+            <p>The dashboard will populate your Neon database, REST, and auth configuration details when the page hydrates.</p>
+          </article>
+        </section>
+
+        <div class="activity-summary" data-operations-activity></div>
+
+        <section class="table-card">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Withdrawal approvals</div>
+              <h3>Pending requests</h3>
+            </div>
+            <div class="page-tabs">
+              <a href="../history/">History</a>
+              <a href="../withdraw/">Withdraw</a>
+              <a class="is-active" href="../operations/">Operations</a>
+            </div>
+          </div>
+          <table class="table-shell">
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Asset</th>
+                <th>Status</th>
+                <th>Amount</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody data-operations-withdrawals>
+              <tr>
+                <td colspan="5"><div class="empty-state">Pending withdrawal data will appear here after the page loads.</div></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="table-card">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Notification queue</div>
+              <h3>Unread notices</h3>
+            </div>
+            <div class="page-tabs">
+              <a href="../dashboard/">Dashboard</a>
+              <a href="../notifications/">Notifications</a>
+              <a class="is-active" href="../operations/">Operations</a>
+            </div>
+          </div>
+          <div class="stack" data-operations-notifications>
+            <div class="empty-state">Unread notifications will load here after hydration.</div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="../../assets/ivory-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Ivory Capital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/ivory-site.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand-lockup" href="../../">
+          <span class="brand-mark">IC</span>
+          <span class="brand-copy"><strong>Ivory Capital</strong><span>Investor onboarding</span></span>
+        </a>
+        <div class="header-actions">
+          <a class="button button-secondary" href="../login/">Already a member?</a>
+          <a class="button button-primary" href="../../contact/">Talk to support</a>
+        </div>
+      </div>
+    </header>
+    <main class="auth-shell container">
+      <section class="auth-card">
+        <div class="eyebrow">Create account</div>
+        <h1 class="auth-title">Open your Ivory Capital profile in minutes.</h1>
+        <p class="auth-copy">This registration page writes directly to the Neon database, using the same backend as the popup create-account flow.</p>
+        <form class="field-grid" data-auth-form="register">
+          <div class="split-grid">
+            <div>
+              <label for="registerFirstName">First name</label>
+              <input id="registerFirstName" name="firstName" type="text" placeholder="First name" required />
+            </div>
+            <div>
+              <label for="registerLastName">Last name</label>
+              <input id="registerLastName" name="lastName" type="text" placeholder="Last name" required />
+            </div>
+          </div>
+          <div>
+            <label for="registerEmail">Email address</label>
+            <input id="registerEmail" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="split-grid">
+            <div>
+              <label for="registerPassword">Password</label>
+              <input id="registerPassword" name="password" type="password" placeholder="Create a password" required />
+            </div>
+            <div>
+              <label for="registerCountry">Country</label>
+              <select id="registerCountry" name="country" required>
+                <option value="">Choose country</option>
+                <option>Nigeria</option>
+                <option>South Africa</option>
+                <option>United Kingdom</option>
+                <option>United States</option>
+                <option>United Arab Emirates</option>
+              </select>
+            </div>
+          </div>
+          <p class="auth-feedback" data-auth-feedback></p>
+          <div class="button-row">
+            <button class="button button-primary" type="submit">Create account</button>
+            <a class="button button-secondary" href="../login/">Back to login</a>
+          </div>
+        </form>
+      </section>
+      <aside class="auth-aside">
+        <div class="eyebrow">Onboarding path</div>
+        <h2 class="section-title">Registration leads directly into the dashboard route.</h2>
+        <div class="auth-points">
+          <div class="auth-point"><strong>Unified</strong><span>Popup and page registration use the same backend endpoint.</span></div>
+          <div class="auth-point"><strong>Ready</strong><span>After signup, users can continue into the dashboard immediately.</span></div>
+          <div class="auth-point"><strong>Structured</strong><span>The new route map now has a real auth surface instead of empty links.</span></div>
+        </div>
+      </aside>
+    </main>
+  </div>
+  <script src="../../assets/ivory-ui.js"></script>
+</body>
+</html>

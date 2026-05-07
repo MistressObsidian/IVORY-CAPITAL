@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Ivory Capital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/ivory-site.css" />
+</head>
+<body>
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar">
+      <div class="dashboard-brand">
+        <a class="brand-lockup" href="../../">
+          <span class="brand-mark">IC</span>
+          <span class="brand-copy"><strong>Ivory Capital</strong><span>Investor dashboard</span></span>
+        </a>
+      </div>
+      <div class="dashboard-sidebar-scroll">
+        <div class="sidebar-section-title">Overview</div>
+        <nav class="sidebar-links">
+          <a class="dashboard-link is-active" href="../dashboard/"><span class="dot"></span><span>Dashboard</span></a>
+          <a class="dashboard-link" href="../wallet/"><span class="dot"></span><span>Wallet</span></a>
+          <a class="dashboard-link" href="../history/"><span class="dot"></span><span>History</span></a>
+          <a class="dashboard-link" href="../mine/"><span class="dot"></span><span>Mine</span></a>
+          <a class="dashboard-link" href="../portfolio/"><span class="dot"></span><span>Portfolio</span></a>
+          <a class="dashboard-link" href="../invest/"><span class="dot"></span><span>Invest</span></a>
+          <a class="dashboard-link" href="../topup/"><span class="dot"></span><span>Top up</span></a>
+          <a class="dashboard-link" href="../withdraw/"><span class="dot"></span><span>Withdraw</span></a>
+          <a class="dashboard-link" href="../user_settings/"><span class="dot"></span><span>Settings</span></a>
+          <a class="dashboard-link" href="../user_settings/kyc/"><span class="dot"></span><span>KYC</span></a>
+          <a class="dashboard-link" href="../notifications/"><span class="dot"></span><span>Notifications</span></a>
+        </nav>
+      </div>
+      <div class="sidebar-promo">
+        <div class="eyebrow">Portfolio status</div>
+        <h3 style="margin-bottom:10px;">Your account hub</h3>
+        <p class="form-note">Move between wallet, history, mining, notifications, and operations from one secured navigation.</p>
+      </div>
+    </aside>
+    <div class="dashboard-content">
+      <header class="dashboard-topbar">
+        <div class="dashboard-topbar-inner">
+          <div>
+            <h1>Account dashboard</h1>
+            <p>Monitor balances, activity, and account status from one unified Ivory Capital workspace.</p>
+          </div>
+          <div class="chip-row">
+            <span class="inline-pill"><strong>Status</strong><span>Live</span></span>
+            <a class="button button-secondary" href="../../contact/">Support</a>
+          </div>
+        </div>
+      </header>
+      <main class="dashboard-main">
+        <section class="panel-grid">
+          <article class="panel">
+            <div class="panel-kicker">Portfolio snapshot</div>
+            <h2 style="font-size:48px; margin-bottom:10px;">Loading balance</h2>
+            <p>Your live balance, withdrawal limits, and portfolio totals will appear here after account data loads.</p>
+            <div class="summary-grid" style="margin-top:18px;">
+              <div class="metric-card"><strong>--</strong><span>Available cash</span></div>
+              <div class="metric-card"><strong>--</strong><span>Active investments</span></div>
+              <div class="metric-card"><strong>--</strong><span>Protected reserves</span></div>
+            </div>
+          </article>
+          <article class="panel">
+            <div class="panel-kicker">Action center</div>
+            <h3>Next steps</h3>
+            <ul class="notice-list">
+              <li>Complete your account verification from the KYC page.</li>
+              <li>Top up your wallet to begin new allocations.</li>
+              <li>Review notifications for onboarding and approval updates.</li>
+            </ul>
+          </article>
+        </section>
+        <section class="table-card">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Recent activity</div>
+              <h3>Latest account movements</h3>
+            </div>
+            <div class="page-tabs">
+              <a class="is-active" href="../dashboard/">Overview</a>
+              <a href="../history/">History</a>
+              <a href="../wallet/">Wallet</a>
+            </div>
+          </div>
+          <table class="table-shell">
+            <thead>
+              <tr><th>Asset</th><th>Type</th><th>Status</th><th>Amount</th></tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="4"><div class="empty-state">Live account activity will load here after authentication.</div></td></tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="../../assets/ivory-ui.js"></script>
+</body>
+</html>

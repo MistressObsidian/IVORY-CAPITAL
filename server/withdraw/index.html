@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Withdraw | Ivory Capital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/ivory-site.css" />
+</head>
+<body>
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar">
+      <div class="dashboard-brand">
+        <a class="brand-lockup" href="../../">
+          <span class="brand-mark">IC</span>
+          <span class="brand-copy"><strong>Ivory Capital</strong><span>Withdrawal desk</span></span>
+        </a>
+      </div>
+      <div class="dashboard-sidebar-scroll">
+        <div class="sidebar-section-title">Overview</div>
+        <nav class="sidebar-links">
+          <a class="dashboard-link" href="../dashboard/"><span class="dot"></span><span>Dashboard</span></a>
+          <a class="dashboard-link" href="../wallet/"><span class="dot"></span><span>Wallet</span></a>
+          <a class="dashboard-link" href="../history/"><span class="dot"></span><span>History</span></a>
+          <a class="dashboard-link" href="../mine/"><span class="dot"></span><span>Mine</span></a>
+          <a class="dashboard-link" href="../portfolio/"><span class="dot"></span><span>Portfolio</span></a>
+          <a class="dashboard-link" href="../invest/"><span class="dot"></span><span>Invest</span></a>
+          <a class="dashboard-link" href="../topup/"><span class="dot"></span><span>Top up</span></a>
+          <a class="dashboard-link is-active" href="../withdraw/"><span class="dot"></span><span>Withdraw</span></a>
+          <a class="dashboard-link" href="../user_settings/"><span class="dot"></span><span>Settings</span></a>
+          <a class="dashboard-link" href="../user_settings/kyc/"><span class="dot"></span><span>KYC</span></a>
+          <a class="dashboard-link" href="../notifications/"><span class="dot"></span><span>Notifications</span></a>
+        </nav>
+      </div>
+    </aside>
+    <div class="dashboard-content">
+      <header class="dashboard-topbar">
+        <div class="dashboard-topbar-inner">
+          <div>
+            <h1>Withdraw</h1>
+            <p>Control outbound requests, settlement expectations, and approval status from a dedicated route.</p>
+          </div>
+        </div>
+      </header>
+      <main class="dashboard-main">
+        <section class="summary-grid">
+          <article class="panel">
+            <div class="panel-kicker">Withdrawal policy</div>
+            <h2>Review queue</h2>
+            <p>Requests are processed after identity and funding checks are complete. KYC completion reduces approval friction.</p>
+          </article>
+          <article class="panel">
+            <div class="panel-kicker">Submit request</div>
+            <h3>Stage a live withdrawal</h3>
+            <p>Send a withdrawal request to the Neon-backed account record and immediately update balances, history, and notifications.</p>
+            <form class="field-grid" data-dashboard-action="withdraw">
+              <div class="field-grid split-grid">
+                <div>
+                  <label for="withdraw-asset">Payout asset</label>
+                  <select id="withdraw-asset" name="assetCode" required>
+                    <option value="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                    <option value="USDT" selected>USDT</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="withdraw-amount">Amount (USD)</label>
+                  <input id="withdraw-amount" name="amount" type="number" min="50" step="0.01" placeholder="250.00" required />
+                </div>
+              </div>
+              <div>
+                <label for="withdraw-destination">Destination wallet or settlement reference</label>
+                <input id="withdraw-destination" name="destination" type="text" placeholder="Wallet address or payout note" required />
+              </div>
+              <p class="form-note">Pending KYC requests are still recorded, but the resulting transaction remains in review until verification clears.</p>
+              <div class="button-row">
+                <button class="button button-primary" type="submit">Submit withdrawal</button>
+                <a class="button button-secondary" href="../user_settings/kyc/">Go to KYC</a>
+              </div>
+              <p class="auth-feedback" data-action-feedback></p>
+            </form>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="../../assets/ivory-ui.js"></script>
+</body>
+</html>

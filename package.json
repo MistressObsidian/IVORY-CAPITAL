@@ -5,7 +5,8 @@
   "description": "Ivory Capital static site and Neon-backed auth service",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "preview": "node server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

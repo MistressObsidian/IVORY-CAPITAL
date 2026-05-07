@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Up | Ivory Capital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/ivory-site.css" />
+</head>
+<body>
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar">
+      <div class="dashboard-brand">
+        <a class="brand-lockup" href="../../">
+          <span class="brand-mark">IC</span>
+          <span class="brand-copy"><strong>Ivory Capital</strong><span>Funding desk</span></span>
+        </a>
+      </div>
+      <div class="dashboard-sidebar-scroll">
+        <div class="sidebar-section-title">Overview</div>
+        <nav class="sidebar-links">
+          <a class="dashboard-link" href="../dashboard/"><span class="dot"></span><span>Dashboard</span></a>
+          <a class="dashboard-link" href="../wallet/"><span class="dot"></span><span>Wallet</span></a>
+          <a class="dashboard-link" href="../history/"><span class="dot"></span><span>History</span></a>
+          <a class="dashboard-link" href="../mine/"><span class="dot"></span><span>Mine</span></a>
+          <a class="dashboard-link" href="../portfolio/"><span class="dot"></span><span>Portfolio</span></a>
+          <a class="dashboard-link" href="../invest/"><span class="dot"></span><span>Invest</span></a>
+          <a class="dashboard-link is-active" href="../topup/"><span class="dot"></span><span>Top up</span></a>
+          <a class="dashboard-link" href="../withdraw/"><span class="dot"></span><span>Withdraw</span></a>
+          <a class="dashboard-link" href="../user_settings/"><span class="dot"></span><span>Settings</span></a>
+          <a class="dashboard-link" href="../user_settings/kyc/"><span class="dot"></span><span>KYC</span></a>
+          <a class="dashboard-link" href="../notifications/"><span class="dot"></span><span>Notifications</span></a>
+        </nav>
+      </div>
+    </aside>
+    <div class="dashboard-content">
+      <header class="dashboard-topbar">
+        <div class="dashboard-topbar-inner">
+          <div>
+            <h1>Top up</h1>
+            <p>Prepare inbound funding using the same account structure now connected across the dashboard.</p>
+          </div>
+        </div>
+      </header>
+      <main class="dashboard-main">
+        <section class="split-grid">
+          <article class="panel">
+            <div class="panel-kicker">Funding route</div>
+            <h2>Deposit instructions</h2>
+            <p>Use wallet-supported assets and confirm origin network before submitting a deposit notice.</p>
+            <ul class="notice-list">
+              <li>USDT TRC20 address ready</li>
+              <li>BTC and ETH reserve addresses available</li>
+              <li>Average confirmation time: 5-20 minutes</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <div class="panel-kicker">Record funding</div>
+            <h3>Submit a live top up</h3>
+            <p>Record a deposit directly into the Neon-backed account and refresh the wallet, dashboard, and history views immediately.</p>
+            <form class="field-grid" data-dashboard-action="topup">
+              <div class="field-grid split-grid">
+                <div>
+                  <label for="topup-asset">Funding asset</label>
+                  <select id="topup-asset" name="assetCode" required>
+                    <option value="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                    <option value="USDT" selected>USDT</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="topup-amount">Amount (USD)</label>
+                  <input id="topup-amount" name="amount" type="number" min="50" step="0.01" placeholder="500.00" required />
+                </div>
+              </div>
+              <p class="form-note">Funding updates the selected wallet, available cash, transaction history, and notifications.</p>
+              <div class="button-row">
+                <button class="button button-primary" type="submit">Record top up</button>
+                <a class="button button-secondary" href="../../contact/">Contact support</a>
+              </div>
+              <p class="auth-feedback" data-action-feedback></p>
+            </form>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="../../assets/ivory-ui.js"></script>
+</body>
+</html>
