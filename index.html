@@ -367,106 +367,197 @@
     <div class="auth-modal-backdrop" data-auth-close></div>
     <div class="auth-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
       <aside class="auth-modal-aside">
-        <div class="eyebrow">Account access</div>
-        <h2 class="auth-title" id="authModalTitle">Enter Ivory Capital through a premium popup flow.</h2>
-        <p class="auth-copy">Login and registration now sit inside a controlled modal experience so users can enter the platform without leaving the landing page.</p>
-        <div class="auth-points">
-          <div class="auth-point">
-            <strong>Fast</strong>
-            <span>Open the correct panel from any primary CTA.</span>
-          </div>
-          <div class="auth-point">
-            <strong>Clear</strong>
-            <span>Dedicated login and register forms with distinct actions.</span>
-          </div>
-          <div class="auth-point">
-            <strong>Ready</strong>
-            <span>Connected account flow with live registration and login handling.</span>
+        <div class="auth-glow"></div>
+
+        <div class="auth-brand-wrap">
+          <div class="brand-mark large">IC</div>
+
+          <div class="eyebrow">Premium Investment Access</div>
+
+          <h2 class="auth-title" id="authModalTitle">
+            Secure access to your global investment dashboard.
+          </h2>
+
+          <p class="auth-copy">
+            Trade crypto, forex, and managed portfolios through a modern institutional-grade platform experience.
+          </p>
+
+          <div class="auth-stats-grid">
+            <div class="auth-stat-card">
+              <strong>256-bit</strong>
+              <span>Encrypted sessions</span>
+            </div>
+
+            <div class="auth-stat-card">
+              <strong>24/7</strong>
+              <span>Platform availability</span>
+            </div>
+
+            <div class="auth-stat-card">
+              <strong>46+</strong>
+              <span>Supported countries</span>
+            </div>
           </div>
         </div>
       </aside>
 
+
       <section class="auth-modal-main">
-        <button class="auth-modal-close" type="button" aria-label="Close auth modal" data-auth-close>Close</button>
-        <div class="auth-tabs" role="tablist" aria-label="Authentication tabs">
-          <button class="auth-tab is-active" type="button" role="tab" aria-selected="true" data-auth-tab="login">Login</button>
-          <button class="auth-tab" type="button" role="tab" aria-selected="false" data-auth-tab="register">Register</button>
-        </div>
 
-        <div class="auth-panel is-active" data-auth-panel="login">
-          <div class="eyebrow">Member access</div>
-          <h3 class="section-title" style="font-size:32px; margin-bottom:12px;">Welcome back to Ivory Capital</h3>
-          <p class="form-note">Use the popup login form to access the platform without leaving this page.</p>
-          <form class="field-grid" data-auth-form="login">
-            <div>
-              <label for="popupLoginEmail">Email address</label>
-              <input id="popupLoginEmail" name="email" type="email" placeholder="you@example.com" required />
+        <button class="auth-modal-close" type="button" aria-label="Close auth modal" data-auth-close>
+          ×
+        </button>
+
+        <div class="auth-panel-shell">
+
+          <div class="auth-tabs" role="tablist" aria-label="Authentication tabs">
+            <button class="auth-tab is-active" type="button" role="tab" aria-selected="true" data-auth-tab="login">
+              Login
+            </button>
+
+            <button class="auth-tab" type="button" role="tab" aria-selected="false" data-auth-tab="register">
+              Register
+            </button>
+          </div>
+
+
+          <div class="auth-panel is-active" data-auth-panel="login">
+
+            <div class="auth-heading-block">
+              <h3>Welcome back</h3>
+              <p>Access your dashboard and continue managing your investments.</p>
             </div>
-            <div>
-              <label for="popupLoginPassword">Password</label>
-              <input id="popupLoginPassword" name="password" type="password" placeholder="Enter your password" required />
+
+            <form class="field-grid modern-form" data-auth-form="login">
+
+              <div class="input-group">
+                <label for="popupLoginEmail">Email Address</label>
+                <input
+                  id="popupLoginEmail"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <label for="popupLoginPassword">Password</label>
+                <input
+                  id="popupLoginPassword"
+                  name="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
+
+              <div class="auth-inline-row modern-inline-row">
+                <label class="auth-checkbox" for="popupRememberMe">
+                  <input id="popupRememberMe" type="checkbox" />
+                  <span>Keep me signed in</span>
+                </label>
+
+                <a class="auth-text-link" href="./contact/">Forgot password?</a>
+              </div>
+
+              <p class="auth-feedback" data-auth-feedback></p>
+
+              <button class="button button-primary auth-submit-btn" type="submit">
+                Access Dashboard
+              </button>
+
+            </form>
+          </div>
+
+
+          <div class="auth-panel" data-auth-panel="register">
+
+            <div class="auth-heading-block">
+              <h3>Create your account</h3>
+              <p>Open your investment account in minutes and start trading globally.</p>
             </div>
-            <div class="auth-inline-row">
-              <label class="auth-checkbox" for="popupRememberMe">
-                <input id="popupRememberMe" type="checkbox" />
-                <span>Keep me signed in on this device</span>
+
+            <form class="field-grid modern-form" data-auth-form="register">
+
+              <div class="split-grid auth-modal-split">
+                <div class="input-group">
+                  <label for="popupFirstName">First Name</label>
+                  <input
+                    id="popupFirstName"
+                    name="firstName"
+                    type="text"
+                    placeholder="John"
+                    required
+                  />
+                </div>
+
+                <div class="input-group">
+                  <label for="popupLastName">Last Name</label>
+                  <input
+                    id="popupLastName"
+                    name="lastName"
+                    type="text"
+                    placeholder="Doe"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="popupRegisterEmail">Email Address</label>
+                <input
+                  id="popupRegisterEmail"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+
+              <div class="split-grid auth-modal-split">
+
+                <div class="input-group">
+                  <label for="popupRegisterPassword">Password</label>
+                  <input
+                    id="popupRegisterPassword"
+                    name="password"
+                    type="password"
+                    placeholder="Create password"
+                    required
+                  />
+                </div>
+
+                <div class="input-group">
+                  <label for="popupRegisterCountry">Country</label>
+                  <select id="popupRegisterCountry" name="country" required>
+                    <option value="">Select Country</option>
+                    <option>United States</option>
+                    <option>United Kingdom</option>
+                    <option>Canada</option>
+                    <option>United Arab Emirates</option>
+                    <option>South Africa</option>
+                    <option>Nigeria</option>
+                  </select>
+                </div>
+              </div>
+
+              <label class="auth-checkbox modern-check" for="popupTermsAccepted">
+                <input id="popupTermsAccepted" type="checkbox" required />
+                <span>
+                  I agree to the Terms of Service and Privacy Policy.
+                </span>
               </label>
-              <a class="auth-text-link" href="./contact/">Need help?</a>
-            </div>
-            <p class="auth-feedback" data-auth-feedback></p>
-            <div class="button-row">
-              <button class="button button-primary" type="submit">Login securely</button>
-              <button class="button button-secondary" type="button" data-auth-tab="register">Create account</button>
-            </div>
-          </form>
-        </div>
 
-        <div class="auth-panel" data-auth-panel="register">
-          <div class="eyebrow">Open an account</div>
-          <h3 class="section-title" style="font-size:32px; margin-bottom:12px;">Create your Ivory Capital profile</h3>
-          <p class="form-note">Create an account here and continue straight into your live dashboard workspace.</p>
-          <form class="field-grid" data-auth-form="register">
-            <div class="split-grid auth-modal-split">
-              <div>
-                <label for="popupFirstName">First name</label>
-                <input id="popupFirstName" name="firstName" type="text" placeholder="First name" required />
-              </div>
-              <div>
-                <label for="popupLastName">Last name</label>
-                <input id="popupLastName" name="lastName" type="text" placeholder="Last name" required />
-              </div>
-            </div>
-            <div>
-              <label for="popupRegisterEmail">Email address</label>
-              <input id="popupRegisterEmail" name="email" type="email" placeholder="you@example.com" required />
-            </div>
-            <div class="split-grid auth-modal-split">
-              <div>
-                <label for="popupRegisterPassword">Password</label>
-                <input id="popupRegisterPassword" name="password" type="password" placeholder="Create a password" required />
-              </div>
-              <div>
-                <label for="popupRegisterCountry">Country</label>
-                <select id="popupRegisterCountry" name="country" required>
-                  <option value="">Choose country</option>
-                  <option>Nigeria</option>
-                  <option>South Africa</option>
-                  <option>United Kingdom</option>
-                  <option>United States</option>
-                  <option>United Arab Emirates</option>
-                </select>
-              </div>
-            </div>
-            <label class="auth-checkbox" for="popupTermsAccepted">
-              <input id="popupTermsAccepted" type="checkbox" required />
-              <span>I agree to the account terms, privacy policy, and platform access requirements.</span>
-            </label>
-            <p class="auth-feedback" data-auth-feedback></p>
-            <div class="button-row">
-              <button class="button button-primary" type="submit">Register now</button>
-              <button class="button button-secondary" type="button" data-auth-tab="login">I already have an account</button>
-            </div>
-          </form>
+              <p class="auth-feedback" data-auth-feedback></p>
+
+              <button class="button button-primary auth-submit-btn" type="submit">
+                Create Investment Account
+              </button>
+
+            </form>
+          </div>
+
         </div>
       </section>
     </div>

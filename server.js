@@ -14,16 +14,56 @@ const schemaPath = path.join(rootDir, 'database', 'schema.sql');
 const neonApiUrl = String(process.env.NEON_API_URL || '').trim();
 const neonAuthUrl = String(process.env.NEON_AUTH_URL || '').trim();
 const neonJwksUrl = String(process.env.NEON_JWKS_URL || '').trim();
+const databaseUrl = String(process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.NEON_DATABASE_URL || '').trim();
+const channelBindingMode = String(process.env.PGCHANNELBINDING || '').trim().toLowerCase();
+const dashboardRedirectPath = '/server/dashboard/';
 
-const pool = new Pool({
-  host: process.env.PGHOST,
-  database: process.env.PGDATABASE,
-  user: process.env.PGUSER,
-  password: process.env.PGPASSWORD,
-  ssl: process.env.PGSSLMODE === 'require' ? { rejectUnauthorized: false } : false,
-  max: 10,
-  idleTimeoutMillis: 30_000
-});
+function buildPoolConfig() {
+  const sharedConfig = {
+    max: 10,
+    idleTimeoutMillis: 30_000
+  };
+
+  if (databaseUrl) {
+    try {
+      const parsedUrl = new URL(databaseUrl);
+      const sslMode = String(parsedUrl.searchParams.get('sslmode') || '').trim().toLowerCase();
+      const parsedChannelBinding = String(parsedUrl.searchParams.get('channel_binding') || '').trim().toLowerCase();
+
+      parsedUrl.searchParams.delete('sslmode');
+      parsedUrl.searchParams.delete('channel_binding');
+
+      return {
+        connectionString: parsedUrl.toString(),
+        ssl: sslMode === 'disable' ? false : { rejectUnauthorized: false },
+        enableChannelBinding: parsedChannelBinding === 'require' || channelBindingMode === 'require',
+        max: sharedConfig.max,
+        idleTimeoutMillis: sharedConfig.idleTimeoutMillis
+      };
+    } catch (error) {
+      return {
+        connectionString: databaseUrl,
+        ssl: { rejectUnauthorized: false },
+        enableChannelBinding: channelBindingMode === 'require',
+        max: sharedConfig.max,
+        idleTimeoutMillis: sharedConfig.idleTimeoutMillis
+      };
+    }
+  }
+
+  return {
+    host: process.env.PGHOST,
+    database: process.env.PGDATABASE,
+    user: process.env.PGUSER,
+    password: process.env.PGPASSWORD,
+    ssl: process.env.PGSSLMODE === 'require' ? { rejectUnauthorized: false } : false,
+    enableChannelBinding: channelBindingMode === 'require',
+    max: sharedConfig.max,
+    idleTimeoutMillis: sharedConfig.idleTimeoutMillis
+  };
+}
+
+const pool = new Pool(buildPoolConfig());
 
 async function ensureSchema() {
   const sql = fs.readFileSync(schemaPath, 'utf8');
@@ -1020,7 +1060,7 @@ app.post('/api/auth/register', async function register(req, res) {
     res.status(201).json({
       ok: true,
       message: 'Account created successfully.',
-      redirectTo: 'http://127.0.0.1:' + port + '/server/dashboard/',
+      redirectTo: dashboardRedirectPath,
       user: publicUser(insert.rows[0])
     });
   } catch (error) {
@@ -1057,7 +1097,7 @@ app.post('/api/auth/login', async function login(req, res) {
     res.json({
       ok: true,
       message: 'Login successful.',
-      redirectTo: 'http://127.0.0.1:' + port + '/server/dashboard/',
+      redirectTo: dashboardRedirectPath,
       user: publicUser(user)
     });
   } catch (error) {

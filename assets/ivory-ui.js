@@ -5,6 +5,7 @@
   var panel = document.querySelector('[data-translate-panel]');
   var authModal = document.querySelector('[data-auth-modal]');
   var authOpeners = Array.prototype.slice.call(document.querySelectorAll('[data-auth-open]'));
+  var authClosers = Array.prototype.slice.call(document.querySelectorAll('[data-auth-close]'));
   var authTabs = Array.prototype.slice.call(document.querySelectorAll('[data-auth-tab]'));
   var authPanels = Array.prototype.slice.call(document.querySelectorAll('[data-auth-panel]'));
   var authForms = Array.prototype.slice.call(document.querySelectorAll('[data-auth-form]'));
@@ -22,7 +23,7 @@
     });
   }
 
-  function setAuthView(view) {
+  function switchAuthTab(view) {
     if (!authModal) {
       return;
     }
@@ -44,10 +45,10 @@
       return;
     }
 
-    setAuthView(view || 'login');
-    authModal.classList.add('is-open');
+    switchAuthTab(view || 'login');
+    authModal.classList.add('is-visible');
     authModal.setAttribute('aria-hidden', 'false');
-    body.classList.add('modal-open');
+    body.style.overflow = 'hidden';
   }
 
   function closeAuthModal() {
@@ -55,9 +56,9 @@
       return;
     }
 
-    authModal.classList.remove('is-open');
+    authModal.classList.remove('is-visible');
     authModal.setAttribute('aria-hidden', 'true');
-    body.classList.remove('modal-open');
+    body.style.overflow = '';
   }
 
   function getApiBase() {
@@ -83,25 +84,32 @@
     });
   });
 
-  authTabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      setAuthView(tab.getAttribute('data-auth-tab'));
+  authClosers.forEach(function (closer) {
+    closer.addEventListener('click', function () {
+      closeAuthModal();
     });
   });
 
-  if (authModal) {
-    authModal.addEventListener('click', function (event) {
-      if (event.target.hasAttribute('data-auth-close')) {
-        closeAuthModal();
-      }
+  authTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      switchAuthTab(tab.getAttribute('data-auth-tab'));
     });
-  }
+  });
+
+  window.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && authModal && authModal.classList.contains('is-visible')) {
+      closeAuthModal();
+    }
+  });
 
   authForms.forEach(function (form) {
     form.addEventListener('submit', async function (event) {
       var feedback = form.querySelector('[data-auth-feedback]');
       var formType = form.getAttribute('data-auth-form');
       var endpoint = formType === 'register' ? '/api/auth/register' : '/api/auth/login';
+      var submitButton = form.querySelector('button[type="submit"]');
+      var submitLabel = submitButton ? submitButton.textContent : '';
+      var keepDisabled = false;
       var payload;
 
       event.preventDefault();
@@ -114,6 +122,11 @@
       feedback.classList.remove('is-error', 'is-visible');
       feedback.textContent = 'Processing request...';
       feedback.classList.add('is-visible');
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = formType === 'register' ? 'Creating account...' : 'Signing in...';
+      }
 
       try {
         var response = await fetch(getApiBase() + endpoint, {
@@ -134,6 +147,7 @@
         feedback.classList.remove('is-error');
         feedback.textContent = result.message || 'Authentication successful.';
         feedback.classList.add('is-visible');
+        keepDisabled = true;
 
         setTimeout(function () {
           window.location.href = result.redirectTo || (getApiBase() + '/server/dashboard/');
@@ -141,6 +155,15 @@
       } catch (error) {
         feedback.classList.add('is-error', 'is-visible');
         feedback.textContent = error.message || 'Unable to reach the authentication service.';
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = submitLabel;
+        }
+      }
+
+      if (!keepDisabled && submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = submitLabel;
       }
     });
   });

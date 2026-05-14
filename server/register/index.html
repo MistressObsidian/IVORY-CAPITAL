@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/ivory-site.css" />
 </head>
-<body>
+<body class="auth-page">
   <div class="site-shell">
     <header class="site-header">
       <div class="site-header-inner">
@@ -28,29 +28,29 @@
         <div class="eyebrow">Create account</div>
         <h1 class="auth-title">Open your Ivory Capital profile in minutes.</h1>
         <p class="auth-copy">This registration page writes directly to the Neon database, using the same backend as the popup create-account flow.</p>
-        <form class="field-grid" data-auth-form="register">
+        <form class="field-grid" data-auth-form="register" autocomplete="on">
           <div class="split-grid">
             <div>
               <label for="registerFirstName">First name</label>
-              <input id="registerFirstName" name="firstName" type="text" placeholder="First name" required />
+              <input id="registerFirstName" name="firstName" type="text" placeholder="First name" autocomplete="given-name" required />
             </div>
             <div>
               <label for="registerLastName">Last name</label>
-              <input id="registerLastName" name="lastName" type="text" placeholder="Last name" required />
+              <input id="registerLastName" name="lastName" type="text" placeholder="Last name" autocomplete="family-name" required />
             </div>
           </div>
           <div>
             <label for="registerEmail">Email address</label>
-            <input id="registerEmail" name="email" type="email" placeholder="you@example.com" required />
+            <input id="registerEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" inputmode="email" required />
           </div>
           <div class="split-grid">
             <div>
               <label for="registerPassword">Password</label>
-              <input id="registerPassword" name="password" type="password" placeholder="Create a password" required />
+              <input id="registerPassword" name="password" type="password" placeholder="Create a password" autocomplete="new-password" required />
             </div>
             <div>
               <label for="registerCountry">Country</label>
-              <select id="registerCountry" name="country" required>
+              <select id="registerCountry" name="country" autocomplete="country-name" required>
                 <option value="">Choose country</option>
                 <option>Nigeria</option>
                 <option>South Africa</option>
