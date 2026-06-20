@@ -1,0 +1,1060 @@
+!(function () {
+  var a,
+    n,
+    d,
+    s,
+    t,
+    o,
+    e,
+    r,
+    l,
+    i,
+    c,
+    m,
+    u = document.querySelector(".navbar-menu").innerHTML,
+    g = "en",
+    b = localStorage.getItem("language") ?? "en",
+    y = "",
+    h = 150;
+  function v(e) {
+    if (document.getElementById("header-lang-img")) {
+      var t = document.querySelector(".navbar-menu");
+      switch (
+        (t.classList.add("opacity-0"),
+        document.getElementById("header-items").classList.add("opacity-0"),
+        (t.innerHTML = u),
+        e)
+      ) {
+        case "en":
+          document.getElementById("header-lang-img").src =
+            "https://img.themesbrand.com/judia/flags/us.svg";
+          break;
+        case "es":
+          document.getElementById("header-lang-img").src =
+            "https://img.themesbrand.com/judia/flags/spain.svg";
+          break;
+        case "de":
+          document.getElementById("header-lang-img").src =
+            "https://img.themesbrand.com/judia/flags/germany.svg";
+          break;
+        case "it":
+          document.getElementById("header-lang-img").src =
+            "https://img.themesbrand.com/judia/flags/italy.svg";
+          break;
+        case "ru":
+          document.getElementById("header-lang-img").src =
+            "https://img.themesbrand.com/judia/flags/russia.svg";
+          break;
+        case "zh":
+          document.getElementById("header-lang-img").src =
+            "https://img.themesbrand.com/judia/flags/china.svg";
+          break;
+        case "fr":
+          document.getElementById("header-lang-img").src =
+            "https://img.themesbrand.com/judia/flags/french.svg";
+          break;
+        case "ar":
+          document.getElementById("header-lang-img").src =
+            "https://img.themesbrand.com/judia/flags/ae.svg";
+          break;
+        default:
+          return (
+            (document.getElementById("header-lang-img").src =
+              "https://img.themesbrand.com/judia/flags/us.svg"),
+            void (e = "en")
+          );
+      }
+      localStorage.setItem("language", e),
+        null == (b = e) && v(g),
+        (t = new XMLHttpRequest()).open(
+          "GET",
+          base_url + "assets/lang/en.json"
+        ),
+        // (t = new XMLHttpRequest()).open("GET", "assets/lang/" + b + ".json"),
+        (t.onreadystatechange = function () {
+          4 === this.readyState &&
+            200 === this.status &&
+            ((y = JSON.parse(this.responseText)),
+            Object.keys(y).forEach(function (t) {
+              var e = document.querySelectorAll("[data-key='" + t + "']");
+              Array.from(e).forEach(function (e) {
+                e.textContent = y[t];
+              });
+            }),
+            (u = document.querySelector(".navbar-menu").innerHTML),
+            B(),
+            document.documentElement.clientWidth < 1025) &&
+            f();
+        }),
+        t.send();
+    }
+  }
+  function p() {
+    var e = document.querySelectorAll(".navbar-nav .collapse");
+    e &&
+      e.forEach(function (t) {
+        const a = new bootstrap.Collapse(t, { toggle: !1 });
+        t.addEventListener("show.bs.collapse", function (e) {
+          e.stopPropagation();
+          e = t.parentElement.closest(".collapse");
+          e
+            ? e.querySelectorAll(".collapse").forEach(function (e) {
+                e = bootstrap.Collapse.getInstance(e);
+                e !== a && e.hide();
+              })
+            : (function (e) {
+                for (var t = [], a = e.parentNode.firstChild; a; )
+                  1 === a.nodeType && a !== e && t.push(a), (a = a.nextSibling);
+                return t;
+              })(t.parentElement).forEach(function (e) {
+                2 < e.childNodes.length &&
+                  e.firstElementChild.setAttribute("aria-expanded", "false"),
+                  e.querySelectorAll("*[id]").forEach(function (e) {
+                    e.classList.remove("show"),
+                      2 < e.childNodes.length &&
+                        e.querySelectorAll("ul li a").forEach(function (e) {
+                          e.hasAttribute("aria-expanded") &&
+                            e.setAttribute("aria-expanded", "false");
+                        });
+                  });
+              });
+        });
+      });
+  }
+  function f() {
+    var e = document.documentElement.clientWidth,
+      t = document.querySelector(".navbar-menu");
+    e < 1025 && 767 < e
+      ? (t && (t.innerHTML = u),
+        "vertical" == sessionStorage.getItem("data-layout") &&
+          document.documentElement.setAttribute(
+            "data-sidebar-size",
+            "sm-hover"
+          ),
+        document.querySelector(".hamburger-icon") &&
+          document.querySelector(".hamburger-icon").classList.add("open"))
+      : 1025 <= e
+      ? ("horizontal" == sessionStorage.getItem("data-layout") && B(),
+        document.querySelector(".hamburger-icon") &&
+          document.querySelector(".hamburger-icon").classList.remove("open"),
+        "vertical" == sessionStorage.getItem("data-layout") &&
+          document.documentElement.setAttribute(
+            "data-sidebar-size",
+            sessionStorage.getItem("data-sidebar-size")
+          ))
+      : e <= 767 &&
+        (document.body.classList.remove("vertical-sidebar-enable"),
+        t && (t.innerHTML = u),
+        "horizontal" != sessionStorage.getItem("data-layout") &&
+          document.documentElement.setAttribute("data-sidebar-size", "lg"),
+        document.querySelector(".hamburger-icon")) &&
+        document.querySelector(".hamburger-icon").classList.add("open"),
+      E();
+  }
+  function E() {
+    var e = document.querySelectorAll("#navbar-nav > li.nav-item");
+    Array.from(e).forEach(function (e) {
+      e.addEventListener("click", S.bind(this), !1),
+        e.addEventListener("mouseover", S.bind(this), !1);
+    });
+  }
+  function S(e) {
+    var t,
+      a,
+      n,
+      o,
+      e = e.target,
+      d = e.nextElementSibling || e.parentElement.nextElementSibling;
+    e &&
+      d &&
+      ((e = d.getBoundingClientRect()),
+      (o = d.offsetWidth),
+      (t = d.offsetHeight),
+      (a = window.innerWidth),
+      (n = window.innerHeight),
+      (o = e.left + o),
+      (e = e.top + t),
+      a < o || n < e) &&
+      d.classList.contains("menu-dropdown") &&
+      d.classList.add("dropdown-custom-right");
+  }
+  function I() {
+    var e = document.documentElement.getAttribute("data-layout"),
+      t = document.documentElement.clientWidth;
+    "vertical" === e
+      ? (t <= 1025 && 767 < t
+          ? (document.body.classList.add("vertical-sidebar-enable"),
+            sessionStorage.getItem("data-sidebar-size"),
+            A("data-sidebar-size", "lg"))
+          : 1025 < t
+          ? (document.body.classList.remove("vertical-sidebar-enable"),
+            "lg" == sessionStorage.getItem("data-sidebar-size")
+              ? A("data-sidebar-size", "sm-hover")
+              : A("data-sidebar-size", "lg"))
+          : t <= 767 &&
+            (document.body.classList.add("vertical-sidebar-enable"),
+            A("data-sidebar-size", "lg")),
+        document.querySelector(".hamburger-icon").classList.toggle("open"))
+      : (767 < t &&
+          document.querySelector(".hamburger-icon").classList.toggle("open"),
+        document.body.classList.contains("menu")
+          ? document.body.classList.remove("menu")
+          : document.body.classList.add("menu"));
+  }
+  function L() {
+    window.addEventListener("resize", f),
+      f(),
+      document.addEventListener("scroll", function () {
+        k();
+      }),
+      window.addEventListener("load", function () {
+        var e;
+        w(),
+          (e = document.getElementsByClassName("vertical-overlay")) &&
+            Array.from(e).forEach(function (e) {
+              e.addEventListener("click", function () {
+                document.body.classList.remove("vertical-sidebar-enable"),
+                  "twocolumn" == sessionStorage.getItem("data-layout")
+                    ? document.body.classList.add("twocolumn-panel")
+                    : document.documentElement.setAttribute(
+                        "data-sidebar-size",
+                        sessionStorage.getItem("data-sidebar-size")
+                      );
+              });
+            }),
+          0 < window.scrollY && k();
+      }),
+      document.getElementById("topnav-hamburger-icon") &&
+        document
+          .getElementById("topnav-hamburger-icon")
+          .addEventListener("click", I),
+      document.body.addEventListener("click", function (e) {
+        e.target.closest("#navbar-header") ||
+          document.body.classList.remove("menu");
+      });
+  }
+  function k() {
+    var e = document.getElementById("page-topbar");
+    e &&
+      (20 <= document.body.scrollTop || 20 <= document.documentElement.scrollTop
+        ? e.classList.add("topbar-shadow")
+        : e.classList.remove("topbar-shadow"));
+  }
+  function w() {
+    var e =
+      "/" == location.pathname ? "index.html" : location.pathname.substring(1);
+    (e = e.substring(e.lastIndexOf("/") + 1)) &&
+      (e = document
+        .getElementById("navbar-nav")
+        .querySelector('[href="' + e + '"]')) &&
+      (e.classList.add("active"), (e = e.closest(".collapse.menu-dropdown"))) &&
+      (e.classList.add("show"),
+      e.parentElement.children[0].classList.add("active"),
+      e.parentElement.children[0].setAttribute("aria-expanded", "true"),
+      e.parentElement.closest(".collapse.menu-dropdown")) &&
+      (e.parentElement.closest(".collapse").classList.add("show"),
+      e.parentElement.closest(".collapse").previousElementSibling &&
+        e.parentElement
+          .closest(".collapse")
+          .previousElementSibling.classList.add("active"),
+      e.parentElement.parentElement.parentElement.parentElement.closest(
+        ".collapse.menu-dropdown"
+      )) &&
+      (e.parentElement.parentElement.parentElement.parentElement
+        .closest(".collapse")
+        .classList.add("show"),
+      e.parentElement.parentElement.parentElement.parentElement.closest(
+        ".collapse"
+      ).previousElementSibling) &&
+      (e.parentElement.parentElement.parentElement.parentElement
+        .closest(".collapse")
+        .previousElementSibling.classList.add("active"),
+      e.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
+        .closest(".collapse")
+        .previousElementSibling.classList.add("active"));
+  }
+  function B() {
+    var e = document.querySelector(".navbar-menu"),
+      t = (e && (e.innerHTML = u), document.getElementById("navbar-header")),
+      a = document.getElementById("header-logo")?.clientWidth ?? 0,
+      n = document.getElementById("header-items")?.clientWidth ?? 0;
+    const o = t.clientWidth - a - n - h,
+      d = y ? y["t-more"] : "More",
+      s = document.documentElement.getAttribute("data-layout"),
+      r = document.querySelectorAll("ul.navbar-nav > li.nav-item");
+    let l = "",
+      i = "",
+      c = 0;
+    Array.prototype.forEach.call(r, function (e, t) {
+      (c += e.offsetWidth) > o && 0 != o && s && "vertical" !== s
+        ? ((l += e.outerHTML), e.remove())
+        : (i = e),
+        t + 1 === r.length &&
+          i.insertAdjacentHTML &&
+          l &&
+          i.insertAdjacentHTML(
+            "afterend",
+            '<li class="nav-item">\t\t\t\t\t\t<a class="nav-link menu-link" href="#sidebarMore" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMore">\t\t\t\t\t\t\t<i class="ri-briefcase-2-line"></i> <span data-key="t-more">' +
+              d +
+              '</span>\t\t\t\t\t\t</a>\t\t\t\t\t\t<div class="collapse menu-dropdown dropdown-custom-right" id="sidebarMore"><ul class="nav nav-sm flex-column">' +
+              l +
+              "</ul></div>\t\t\t\t\t</li>"
+          );
+    }),
+      "vertical" === s
+        ? document
+            .getElementById("scrollbar")
+            .setAttribute("data-simplebar", "")
+        : document
+            .getElementById("scrollbar")
+            .removeAttribute("data-simplebar", ""),
+      E(),
+      w(),
+      e.classList.remove("opacity-0"),
+      document.getElementById("header-items").classList.remove("opacity-0");
+  }
+  function A(e, t) {
+    var a, n;
+    document.documentElement.setAttribute(e, t),
+      (a = e),
+      (n = t),
+      Array.from(document.querySelectorAll(`input[name="${a}"]`)).forEach(
+        function (t) {
+          (t.checked = n === t.value),
+            t.addEventListener("change", function () {
+              if (
+                (document.documentElement.setAttribute(a, t.value),
+                sessionStorage.setItem(a, t.value),
+                "data-bs-theme" === a &&
+                  (("light" === t.value
+                    ? (document.getElementById("topbar-color-dark")?.click(),
+                      document.getElementById("sidebar-color-light"))
+                    : "dark" === t.value
+                    ? (document.getElementById("topbar-color-dark")?.click(),
+                      document.getElementById("sidebar-color-dark"))
+                    : "brand" === t.value
+                    ? (document.getElementById("topbar-color-brand")?.click(),
+                      document.getElementById("sidebar-color-dark"))
+                    : (document.getElementById("topbar-color-dark")?.click(),
+                      document.getElementById("sidebar-color-light"))
+                  )?.click(),
+                  window.dispatchEvent(new Event("resize"))),
+                "data-layout-width" == a && "boxed" == t.value
+                  ? (document.documentElement.setAttribute(
+                      "data-sidebar-size",
+                      "sm-hover"
+                    ),
+                    sessionStorage.setItem("data-sidebar-size", "sm-hover"),
+                    (document.getElementById(
+                      "sidebar-size-small-hover"
+                    ).checked = !0))
+                  : "data-layout-width" == a &&
+                    "fluid" == t.value &&
+                    (document.documentElement.setAttribute(
+                      "data-sidebar-size",
+                      "lg"
+                    ),
+                    sessionStorage.setItem("data-sidebar-size", "lg"),
+                    (document.getElementById("sidebar-size-default").checked =
+                      !0)),
+                "data-layout" == a &&
+                  ("vertical" == t.value
+                    ? (q("vertical"), p())
+                    : "horizontal" == t.value && q("horizontal")),
+                "data-card-layout" === a &&
+                  ("borderless" !== t.value && "border" === t.value
+                    ? document.documentElement.setAttribute(
+                        "data-card-layout",
+                        "border"
+                      )
+                    : document.documentElement.setAttribute(
+                        "data-card-layout",
+                        "borderless"
+                      ),
+                  window.dispatchEvent(new Event("resize"))),
+                "data-preloader" === a)
+              ) {
+                const e = document.getElementById("preloader");
+                "enable" === t.value && e
+                  ? (document.documentElement.setAttribute(
+                      "data-preloader",
+                      "enable"
+                    ),
+                    setTimeout(() => {
+                      (e.style.opacity = "0"),
+                        (e.style.visibility = "hidden"),
+                        document.getElementById("customizerclose-btn").click();
+                    }, 1e3))
+                  : "disable" === t.value &&
+                    (document.documentElement.setAttribute(
+                      "data-preloader",
+                      "disable"
+                    ),
+                    document.getElementById("customizerclose-btn").click());
+              }
+              "data-layout-width" === a && B();
+            });
+        }
+      ),
+      sessionStorage.setItem(e, t);
+  }
+  function q(e) {
+    "vertical" == e
+      ? (document.querySelector(".navbar-menu") &&
+          (document.querySelector(".navbar-menu").innerHTML = u),
+        document.getElementById("theme-settings-offcanvas") &&
+          ((document.getElementById("sidebar-size").style.display = "block"),
+          (document.getElementById("sidebar-color").style.display = "block"),
+          (document.getElementById("layout-position").style.display = "block"),
+          (document.getElementById("layout-width").style.display = "block")),
+        "vertical" == document.documentElement.getAttribute("data-layout") &&
+          (document.querySelector(".navbar-menu") &&
+            (document.querySelector(".navbar-menu").innerHTML = u),
+          document
+            .getElementById("scrollbar")
+            .setAttribute("data-simplebar", ""),
+          document
+            .getElementById("navbar-nav")
+            .setAttribute("data-simplebar", ""),
+          document.getElementById("scrollbar").classList.add("h-100")),
+        "horizontal" == document.documentElement.getAttribute("data-layout") &&
+          B(),
+        w(),
+        setTimeout(function () {
+          var e,
+            t,
+            a = document.getElementById("navbar-nav");
+          a &&
+            ((a = a.querySelector(".nav-item .active")),
+            300 < (e = a ? a.offsetTop : 0)) &&
+            (t = document.getElementsByClassName("app-menu")
+              ? document.getElementsByClassName("app-menu")[0]
+              : "") &&
+            t.querySelector(".simplebar-content-wrapper") &&
+            setTimeout(function () {
+              t.querySelector(".simplebar-content-wrapper").scrollTop =
+                330 == e ? e + 85 : e;
+            }, 0);
+        }, 250))
+      : "horizontal" == e &&
+        (B(),
+        document.getElementById("theme-settings-offcanvas") &&
+          ((document.getElementById("sidebar-size").style.display = "none"),
+          (document.getElementById("sidebar-color").style.display = "none"),
+          (document.getElementById("layout-position").style.display = "block"),
+          (document.getElementById("layout-width").style.display = "block")),
+        w());
+  }
+  function x(e) {
+    if (e == e) {
+      switch (e["data-layout"]) {
+        case "vertical":
+          A("data-layout", "vertical"), q("vertical"), p();
+          break;
+        case "horizontal":
+          A("data-layout", "horizontal"), q("horizontal");
+          break;
+        default:
+          "vertical" == sessionStorage.getItem("data-layout") &&
+          sessionStorage.getItem("data-layout")
+            ? (A("data-layout", "vertical"), q("vertical"), p())
+            : "horizontal" == sessionStorage.getItem("data-layout") &&
+              (A("data-layout", "horizontal"), q("horizontal"));
+      }
+      switch (e["data-topbar"]) {
+        case "light":
+          A("data-topbar", "light");
+          break;
+        case "dark":
+          A("data-topbar", "dark");
+          break;
+        case "brand":
+          A("data-topbar", "brand");
+          break;
+        default:
+          A("data-topbar", "light");
+      }
+      switch (e["data-topbar-image"]) {
+        case "pattern-1":
+          A("data-topbar-image", "pattern-1");
+          break;
+        case "pattern-2":
+          A("data-topbar-image", "pattern-2");
+          break;
+        case "pattern-3":
+          A("data-topbar-image", "pattern-3");
+          break;
+        default:
+          sessionStorage.getItem("data-topbar-image");
+      }
+      switch (e["data-bs-theme"]) {
+        case "light":
+          A("data-bs-theme", "light");
+          break;
+        case "dark":
+          A("data-bs-theme", "dark");
+          break;
+        case "brand":
+          A("data-bs-theme", "brand");
+          break;
+        default:
+          A("data-bs-theme", "light");
+      }
+      switch (e["data-layout-width"]) {
+        case "fluid":
+          A("data-layout-width", "fluid");
+          break;
+        case "boxed":
+          A("data-layout-width", "boxed");
+          break;
+        default:
+          A(
+            "data-layout-width",
+            sessionStorage.getItem("data-layout-width") ?? "fluid"
+          );
+      }
+      switch (e["data-sidebar-size"]) {
+        case "lg":
+          A("data-sidebar-size", "lg");
+          break;
+        case "md":
+          A("data-sidebar-size", "md");
+          break;
+        case "sm-hover":
+          A("data-sidebar-size", "sm-hover");
+          break;
+        default:
+          A(
+            "data-sidebar-size",
+            sessionStorage.getItem("data-sidebar-size") ?? "lg"
+          );
+      }
+      switch (e["data-sidebar"]) {
+        case "light":
+          A("data-sidebar", "light");
+          break;
+        case "dark":
+          A("data-sidebar", "dark");
+          break;
+        case "gradient":
+          A("data-sidebar", "gradient");
+          break;
+        case "gradient-2":
+          A("data-sidebar", "gradient-2");
+          break;
+        case "gradient-3":
+          A("data-sidebar", "gradient-3");
+          break;
+        case "gradient-4":
+          A("data-sidebar", "gradient-4");
+          break;
+        default:
+          A("data-sidebar", sessionStorage.getItem("data-sidebar") ?? "light");
+      }
+      switch (e["data-card-layout"]) {
+        case "borderless":
+          A("data-card-layout", "borderless");
+          break;
+        case "border":
+          A("data-card-layout", "border");
+          break;
+        default:
+          A(
+            "data-card-layout",
+            sessionStorage.getItem("data-card-layout") ?? "borderless"
+          );
+      }
+      switch (e["data-layout-position"]) {
+        case "fixed":
+          A("data-layout-position", "fixed");
+          break;
+        case "scrollable":
+          A("data-layout-position", "scrollable");
+          break;
+        default:
+          A(
+            "data-layout-position",
+            sessionStorage.getItem("data-layout-position") ?? "fixed"
+          );
+      }
+      switch (e["data-layout-position"]) {
+        case "fixed":
+          A("data-layout-position", "fixed");
+          break;
+        case "scrollable":
+          A("data-layout-position", "scrollable");
+          break;
+        default:
+          A(
+            "data-layout-position",
+            sessionStorage.getItem("data-layout-position") ?? "fixed"
+          );
+      }
+      switch (e["data-preloader"]) {
+        case "disable":
+          A("data-preloader", "disable");
+          break;
+        case "enable":
+          z();
+          break;
+        default:
+          sessionStorage.getItem("data-preloader") &&
+          "disable" == sessionStorage.getItem("data-preloader")
+            ? A("data-preloader", "disable")
+            : "enable" == sessionStorage.getItem("data-preloader")
+            ? z()
+            : document.documentElement.setAttribute(
+                "data-preloader",
+                "disable"
+              );
+      }
+    }
+  }
+  function z() {
+    A("data-preloader", "enable");
+    var e = document.getElementById("preloader");
+    e &&
+      window.addEventListener("load", function () {
+        (e.style.opacity = "0"), (e.style.visibility = "hidden");
+      });
+  }
+  function T(e, t, a, n) {
+    var o = document.getElementById(a);
+    n.setAttribute(e, t), o && document.getElementById(a).click();
+  }
+  function F() {
+    document.fullscreenElement ||
+      document.mozFullScreenElement ||
+      document.webkitFullscreenElement ||
+      document.msFullscreenElement ||
+      document.body.classList.remove("fullscreen-enable");
+  }
+  document.getElementById("markRead") &&
+    document.getElementById("markRead").addEventListener("click", function () {
+      var e = document.getElementById("notificationItemsTabContent");
+      e &&
+        Array.from(
+          e.querySelectorAll(".notification-item.unread-message")
+        ).forEach((e) => {
+          e.classList.remove("unread-message");
+        });
+    }),
+    document.getElementById("deleteAllNotification") &&
+      document
+        .getElementById("deleteAllNotification")
+        .addEventListener("click", function () {
+          var e = document.getElementById("notificationItemsTabContent");
+          e &&
+            Array.from(e.querySelectorAll(".notification-item")).forEach(
+              (e) => {
+                e.remove(),
+                  document.querySelectorAll(".notification-badge") &&
+                    Array.from(
+                      document.querySelectorAll(".notification-badge")
+                    ).forEach((e) => {
+                      e.innerHTML = 0;
+                    }),
+                  document
+                    .querySelector(".empty-notification-elem")
+                    .classList.remove("d-none");
+              }
+            );
+        }),
+    sessionStorage.getItem("defaultAttribute")
+      ? ((a = {}),
+        [
+          "data-layout",
+          "data-sidebar",
+          "data-card-layout",
+          "data-sidebar-size",
+          "data-bs-theme",
+          "data-layout-width",
+          "data-layout-position",
+          "data-topbar",
+          "data-topbar-image",
+          "data-preloader",
+        ].forEach(function (e) {
+          a[e] = sessionStorage.getItem(e);
+        }),
+        x(a))
+      : ((r = document.documentElement.attributes),
+        (a = {}),
+        Array.from(r).forEach(function (e) {
+          var t;
+          e &&
+            e.nodeName &&
+            "undefined" != e.nodeName &&
+            ((t = e.nodeName),
+            (a[t] = e.nodeValue),
+            sessionStorage.setItem(t, e.nodeValue));
+        }),
+        sessionStorage.setItem("defaultAttribute", JSON.stringify(a)),
+        x(a),
+        (r = document.querySelector(
+          '.btn[data-bs-target="#theme-settings-offcanvas"]'
+        )) && r.click()),
+    (n = document.getElementById("search-close-options")),
+    (d = document.getElementById("search-dropdown")),
+    (s = document.getElementById("search-options")) &&
+      (s.addEventListener("focus", function () {
+        0 < s.value.length
+          ? (d.classList.add("show"), n.classList.remove("d-none"))
+          : (d.classList.remove("show"), n.classList.add("d-none"));
+      }),
+      s.addEventListener("keyup", function (e) {
+        var o, t;
+        0 < s.value.length
+          ? (d.classList.add("show"),
+            n.classList.remove("d-none"),
+            (o = s.value.toLowerCase()),
+            (t = document.getElementsByClassName("notify-item")),
+            Array.from(t).forEach(function (e) {
+              var t,
+                a,
+                n = "";
+              e.querySelector("h6")
+                ? ((t = e
+                    .getElementsByTagName("span")[0]
+                    .innerText.toLowerCase()),
+                  (n = (a = e
+                    .querySelector("h6")
+                    .innerText.toLowerCase()).includes(o)
+                    ? a
+                    : t))
+                : e.getElementsByTagName("span") &&
+                  (n = e
+                    .getElementsByTagName("span")[0]
+                    .innerText.toLowerCase()),
+                n &&
+                  (n.includes(o)
+                    ? (e.classList.add("d-block"), e.classList.remove("d-none"))
+                    : (e.classList.remove("d-block"),
+                      e.classList.add("d-none"))),
+                Array.from(
+                  document.getElementsByClassName("notification-group-list")
+                ).forEach(function (e) {
+                  0 == e.querySelectorAll(".notify-item.d-block").length
+                    ? (e.querySelector(".notification-title").style.display =
+                        "none")
+                    : (e.querySelector(".notification-title").style.display =
+                        "block");
+                });
+            }))
+          : (d.classList.remove("show"), n.classList.add("d-none"));
+      }),
+      n.addEventListener("click", function () {
+        (s.value = ""), d.classList.remove("show"), n.classList.add("d-none");
+      }),
+      document.body.addEventListener("click", function (e) {
+        "search-options" !== e.target.getAttribute("id") &&
+          (d.classList.remove("show"), n.classList.add("d-none"));
+      })),
+    (t = document.getElementById("search-close-options")),
+    (o = document.getElementById("search-dropdown-reponsive")),
+    (e = document.getElementById("search-options-reponsive")),
+    t &&
+      o &&
+      e &&
+      (e.addEventListener("focus", function () {
+        0 < e.value.length
+          ? (o.classList.add("show"), t.classList.remove("d-none"))
+          : (o.classList.remove("show"), t.classList.add("d-none"));
+      }),
+      e.addEventListener("keyup", function () {
+        0 < e.value.length
+          ? (o.classList.add("show"), t.classList.remove("d-none"))
+          : (o.classList.remove("show"), t.classList.add("d-none"));
+      }),
+      t.addEventListener("click", function () {
+        (e.value = ""), o.classList.remove("show"), t.classList.add("d-none");
+      }),
+      document.body.addEventListener("click", function (e) {
+        "search-options" !== e.target.getAttribute("id") &&
+          (o.classList.remove("show"), t.classList.add("d-none"));
+      })),
+    (r = document.querySelector('[data-toggle="fullscreen"]')) &&
+      r.addEventListener("click", function (e) {
+        e.preventDefault(),
+          document.body.classList.toggle("fullscreen-enable"),
+          document.fullscreenElement ||
+          document.mozFullScreenElement ||
+          document.webkitFullscreenElement ||
+          document.msFullscreenElement
+            ? document.exitFullscreen
+              ? document.exitFullscreen()
+              : document.mozCancelFullScreen
+              ? document.mozCancelFullScreen()
+              : document.webkitExitFullscreen
+              ? document.webkitExitFullscreen()
+              : document.msExitFullscreen && document.msExitFullscreen()
+            : document.documentElement.requestFullscreen
+            ? document.documentElement.requestFullscreen()
+            : document.documentElement.mozRequestFullScreen
+            ? document.documentElement.mozRequestFullScreen()
+            : document.documentElement.webkitRequestFullscreen
+            ? document.documentElement.webkitRequestFullscreen(
+                Element.ALLOW_KEYBOARD_INPUT
+              )
+            : document.documentElement.msRequestFullscreen &&
+              document.documentElement.msRequestFullscreen();
+      }),
+    document.addEventListener("fullscreenchange", F),
+    document.addEventListener("webkitfullscreenchange", F),
+    document.addEventListener("mozfullscreenchange", F),
+    document.addEventListener("MSFullscreenChange", F);
+  {
+    const H = document.documentElement;
+    document
+      .querySelectorAll("#light-dark-mode .dropdown-item")
+      .forEach((a) => {
+        a.addEventListener("click", (e) => {
+          var t = a.dataset["mode"];
+          H.hasAttribute("data-bs-theme") && "auto" !== t
+            ? (T("data-bs-theme", t, "layout-mode-" + t, H),
+              sessionStorage.setItem("data-layout-auto", "false"))
+            : H.hasAttribute("data-bs-theme") &&
+              "auto" === t &&
+              (T(
+                "data-bs-theme",
+                (t = window.matchMedia("(prefers-color-scheme: dark)").matches
+                  ? "dark"
+                  : "light"),
+                "layout-mode-" + t,
+                H
+              ),
+              sessionStorage.setItem("data-layout-auto", "true")),
+            H.classList.toggle(
+              "mode-auto",
+              "true" === sessionStorage.getItem("data-layout-auto")
+            );
+        });
+      }),
+      H.classList.toggle(
+        "mode-auto",
+        "true" === sessionStorage.getItem("data-layout-auto")
+      );
+  }
+  function C(e) {
+    return e.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  function N() {
+    var e;
+    "horizontal" !== document.documentElement.getAttribute("data-layout") &&
+      (document.getElementById("navbar-nav") &&
+        (e = new SimpleBar(document.getElementById("navbar-nav"))) &&
+        e.getContentElement(),
+      clearTimeout(m));
+  }
+  L(),
+    (l = document.querySelectorAll(".counter-value")).length &&
+      l.forEach((e) => {
+        const t = +e.getAttribute("data-target"),
+          a = t / 250;
+        let n = 0;
+        const o = () => {
+          (n += a) < t
+            ? ((e.innerText = C(n.toFixed(0))), setTimeout(o, 1))
+            : (e.innerText = C(t));
+        };
+        o();
+      }),
+    Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach(
+      function (e) {
+        new bootstrap.Tooltip(e);
+      }
+    ),
+    Array.from(document.querySelectorAll('[data-bs-toggle="popover"]')).forEach(
+      function (e) {
+        new bootstrap.Popover(e);
+      }
+    ),
+    (l = document.getElementById("reset-layout")) &&
+      l.addEventListener("click", function () {
+        sessionStorage.clear(), location.reload();
+      }),
+    (l = document.querySelectorAll("[data-toast]")),
+    Array.from(l).forEach(function (a) {
+      a.addEventListener("click", function () {
+        var e = {},
+          t = a.attributes;
+        t["data-toast-text"] &&
+          (e.text = t["data-toast-text"].value.toString()),
+          t["data-toast-gravity"] &&
+            (e.gravity = t["data-toast-gravity"].value.toString()),
+          t["data-toast-position"] &&
+            (e.position = t["data-toast-position"].value.toString()),
+          t["data-toast-className"] &&
+            (e.className = t["data-toast-className"].value.toString()),
+          t["data-toast-duration"] &&
+            (e.duration = t["data-toast-duration"].value.toString()),
+          t["data-toast-close"] &&
+            (e.close = t["data-toast-close"].value.toString()),
+          t["data-toast-style"] &&
+            (e.style = t["data-toast-style"].value.toString()),
+          t["data-toast-offset"] && (e.offset = t["data-toast-offset"]),
+          Toastify({
+            newWindow: !0,
+            text: e.text,
+            gravity: e.gravity,
+            position: e.position,
+            className: "bg-" + e.className,
+            stopOnFocus: !0,
+            offset: { x: e.offset ? 50 : 0, y: e.offset ? 10 : 0 },
+            duration: e.duration,
+            close: "close" == e.close,
+            style:
+              "style" == e.style
+                ? { background: "linear-gradient(to right, #0AB39C, #405189)" }
+                : "",
+          }).showToast();
+      });
+    }),
+    (l = document.querySelectorAll("[data-choices]")),
+    Array.from(l).forEach(function (e) {
+      var t = {},
+        a = e.attributes;
+      a["data-choices-groups"] &&
+        (t.placeholderValue = "This is a placeholder set in the config"),
+        a["data-choices-search-false"] && (t.searchEnabled = !1),
+        a["data-choices-search-true"] && (t.searchEnabled = !0),
+        a["data-choices-removeItem"] && (t.removeItemButton = !0),
+        a["data-choices-sorting-false"] && (t.shouldSort = !1),
+        a["data-choices-sorting-true"] && (t.shouldSort = !0),
+        a["data-choices-multiple-remove"] && (t.removeItemButton = !0),
+        a["data-choices-limit"] &&
+          (t.maxItemCount = a["data-choices-limit"].value.toString()),
+        a["data-choices-limit"] &&
+          (t.maxItemCount = a["data-choices-limit"].value.toString()),
+        a["data-choices-editItem-true"] && (t.maxItemCount = !0),
+        a["data-choices-editItem-false"] && (t.maxItemCount = !1),
+        a["data-choices-text-unique-true"] && (t.duplicateItemsAllowed = !1),
+        a["data-choices-text-disabled-true"] && (t.addItems = !1),
+        a["data-choices-text-disabled-true"]
+          ? new Choices(e, t).disable()
+          : new Choices(e, t);
+    }),
+    (l = document.querySelectorAll("[data-provider]")),
+    Array.from(l).forEach(function (e) {
+      var t, a, n;
+      "flatpickr" == e.getAttribute("data-provider")
+        ? ((t = {}),
+          (n = e.attributes)["data-date-format"] &&
+            (t.dateFormat = n["data-date-format"].value.toString()),
+          n["data-enable-time"] &&
+            ((t.enableTime = !0),
+            (t.dateFormat = n["data-date-format"].value.toString() + " H:i")),
+          n["data-altFormat"] &&
+            ((t.altInput = !0),
+            (t.altFormat = n["data-altFormat"].value.toString())),
+          n["data-minDate"] &&
+            ((t.minDate = n["data-minDate"].value.toString()),
+            (t.dateFormat = n["data-date-format"].value.toString())),
+          n["data-maxDate"] &&
+            ((t.maxDate = n["data-maxDate"].value.toString()),
+            (t.dateFormat = n["data-date-format"].value.toString())),
+          n["data-default-date"] &&
+            ((t.defaultDate = n["data-default-date"].value.toString()),
+            (t.dateFormat = n["data-date-format"].value.toString())),
+          n["data-multiple-date"] &&
+            ((t.mode = "multiple"),
+            (t.dateFormat = n["data-date-format"].value.toString())),
+          n["data-range-date"] &&
+            ((t.mode = "range"),
+            (t.dateFormat = n["data-date-format"].value.toString())),
+          n["data-inline-date"] &&
+            ((t.inline = !0),
+            (t.defaultDate = n["data-default-date"].value.toString()),
+            (t.dateFormat = n["data-date-format"].value.toString())),
+          n["data-disable-date"] &&
+            ((a = []).push(n["data-disable-date"].value),
+            (t.disable = a.toString().split(","))),
+          n["data-week-number"] &&
+            ((a = []).push(n["data-week-number"].value), (t.weekNumbers = !0)),
+          flatpickr(e, t))
+        : "timepickr" == e.getAttribute("data-provider") &&
+          ((a = {}),
+          (n = e.attributes)["data-time-basic"] &&
+            ((a.enableTime = !0), (a.noCalendar = !0), (a.dateFormat = "H:i")),
+          n["data-time-hrs"] &&
+            ((a.enableTime = !0),
+            (a.noCalendar = !0),
+            (a.dateFormat = "H:i"),
+            (a.time_24hr = !0)),
+          n["data-min-time"] &&
+            ((a.enableTime = !0),
+            (a.noCalendar = !0),
+            (a.dateFormat = "H:i"),
+            (a.minTime = n["data-min-time"].value.toString())),
+          n["data-max-time"] &&
+            ((a.enableTime = !0),
+            (a.noCalendar = !0),
+            (a.dateFormat = "H:i"),
+            (a.minTime = n["data-max-time"].value.toString())),
+          n["data-default-time"] &&
+            ((a.enableTime = !0),
+            (a.noCalendar = !0),
+            (a.dateFormat = "H:i"),
+            (a.defaultDate = n["data-default-time"].value.toString())),
+          n["data-time-inline"] &&
+            ((a.enableTime = !0),
+            (a.noCalendar = !0),
+            (a.defaultDate = n["data-time-inline"].value.toString()),
+            (a.inline = !0)),
+          flatpickr(e, a));
+    }),
+    document
+      .querySelectorAll('.dropdown-menu a[data-bs-toggle="tab"]')
+      .forEach(function (t) {
+        t.addEventListener("click", function (e) {
+          e.preventDefault(),
+            e.stopPropagation(),
+            bootstrap.Tab.getInstance(t).show();
+        });
+      }),
+    v(null === b ? g : b),
+    (l = document.getElementsByClassName("language")) &&
+      Array.from(l).forEach(function (t) {
+        t.addEventListener("click", function (e) {
+          v(t.getAttribute("data-lang"));
+        });
+      }),
+    p(),
+    (l = document.getElementsByClassName("plus")),
+    (i = document.getElementsByClassName("minus")),
+    (c = document.getElementsByClassName("product")),
+    l &&
+      Array.from(l).forEach(function (e) {
+        e.addEventListener("click", function (t) {
+          parseInt(e.previousElementSibling.value) <
+            t.target.previousElementSibling.getAttribute("max") &&
+            (t.target.previousElementSibling.value++, c) &&
+            Array.from(c).forEach(function (e) {
+              updateQuantity(t.target);
+            });
+        });
+      }),
+    i &&
+      Array.from(i).forEach(function (e) {
+        e.addEventListener("click", function (t) {
+          parseInt(e.nextElementSibling.value) >
+            t.target.nextElementSibling.getAttribute("min") &&
+            (t.target.nextElementSibling.value--, c) &&
+            Array.from(c).forEach(function (e) {
+              updateQuantity(t.target);
+            });
+        });
+      }),
+    window.addEventListener("resize", function () {
+      m && clearTimeout(m), (m = setTimeout(N, 2e3));
+    });
+})();
+const myButton = document.getElementById("back-to-top");
+myButton &&
+  (window.addEventListener("scroll", function () {
+    100 < window.scrollY
+      ? (myButton.style.display = "block")
+      : (myButton.style.display = "none");
+  }),
+  myButton.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }));

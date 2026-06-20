@@ -1,0 +1,38 @@
+!(function () {
+  "use strict";
+  if (sessionStorage.getItem("defaultAttribute")) {
+    for (
+      var t = document.documentElement.attributes, e = {}, a = 0;
+      a < t.length;
+      a++
+    ) {
+      var o = t[a];
+      o.nodeName && "undefined" != o.nodeName && (e[o.nodeName] = o.nodeValue);
+    }
+    if (JSON.stringify(e) !== sessionStorage.getItem("defaultAttribute"))
+      sessionStorage.clear(), location.reload();
+    else {
+      var s,
+        d = {
+          "data-layout": sessionStorage.getItem("data-layout"),
+          "data-sidebar": sessionStorage.getItem("data-sidebar"),
+          "data-card-layout": sessionStorage.getItem("data-card-layout"),
+          "data-sidebar-size": sessionStorage.getItem("data-sidebar-size"),
+          "data-bs-theme": sessionStorage.getItem("data-bs-theme"),
+          "data-layout-width": sessionStorage.getItem("data-layout-width"),
+          "data-layout-position": sessionStorage.getItem(
+            "data-layout-position"
+          ),
+          "data-topbar": sessionStorage.getItem("data-topbar"),
+          "data-topbar-image": sessionStorage.getItem("data-topbar-image"),
+          "data-preloader": sessionStorage.getItem("data-preloader"),
+        };
+      for (s in d) d[s] && document.documentElement.setAttribute(s, d[s]);
+    }
+  }
+  document.getElementById("page-topbar") &&
+    (window.onscroll = function () {
+      0 < window.scrollY &&
+        document.getElementById("page-topbar").classList.add("topbar-shadow");
+    });
+})();

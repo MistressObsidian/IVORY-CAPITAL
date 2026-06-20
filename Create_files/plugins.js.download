@@ -1,0 +1,23 @@
+var scripts = document.getElementsByTagName("script");
+var path = scripts[scripts.length - 1].src.split("?")[0]; // remove any ?query
+var baseUrl = path.split("/").slice(0, -3).join("/") + "/";
+
+// Load required CSS and JS files
+document.querySelectorAll("[toast-list]") &&
+  document.writeln(
+    "<script src='" +
+      base_url +
+      "assets/libs/toastify-js/src/toastify.js'></script>"
+  ),
+  document.querySelectorAll("[data-provider]") &&
+    document.writeln(
+      "<script src='" +
+        base_url +
+        "assets/libs/flatpickr/flatpickr.min.js'></script>"
+    ),
+  document.querySelectorAll("[data-choices]") &&
+    document.writeln(
+      "<script src='" +
+        base_url +
+        "assets/libs/choices.js/public/assets/scripts/choices.min.js'></script>"
+    );

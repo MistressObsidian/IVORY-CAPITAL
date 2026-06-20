@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://capitaltrademarket.com/server/wallet/create -->
+<html lang="en" data-layout="vertical" data-layout-width="fluid" data-sidebar="dark" data-topbar="brand" data-preloader="disable" data-card-layout="borderless" data-bs-theme="brand" data-topbar-image="pattern-1" data-sidebar-size="lg" data-layout-position="fixed"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <title>Capital Trade market    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Minimal Admin &amp; Dashboard Template" name="description">
+    <meta content="Themesbrand" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="./Create_files/favicon.png">
+
+    <!-- Sweet Alert css-->
+    <link href="./Create_files/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Layout config Js -->
+    <script src="./Create_files/layout.js.download"></script>
+    <!-- Bootstrap Css -->
+    <link href="./Create_files/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Icons Css -->
+    <link href="./Create_files/icons.min.css" rel="stylesheet" type="text/css">
+    <!-- App Css-->
+    <link href="./Create_files/app.min.css" rel="stylesheet" type="text/css">
+    <!-- custom Css-->
+    <link href="./Create_files/custom.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./Create_files/all.min.css">
+
+    <script>
+        var base_url = 'https://capitaltrademarket.com/server/';
+    </script>
+
+
+    <style>
+        #processLoader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 99999;
+            width: 150px;
+            height: 150px;
+            padding: 20px;
+            margin-top: -75px;
+            margin-left: -75px;
+            border-radius: 50%;
+            opacity: 0.5;
+            /* background-color: #f3f3f3; */
+            background: url(https://capitaltrademarket.com/server/assets/images/preloader.gif)50% 50% no-repeat rgba(15 10 10 /29%);
+            overflow: hidden;
+            /* -webkit-animation: spin 2s linear infinite; */
+            /* animation: spin 2s linear infinite; */
+            /* display: none; */
+        }
+
+        #processLoader img {
+            position: absolute;
+            width: 100%;
+        }
+
+        #processLoader2 {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 99999;
+            width: 100%;
+            height: 100% !important;
+            /* height: 150px; */
+            /* border-radius: 50%; */
+            /* opacity: 0.5; */
+            /* background-color: #f3f3f3; */
+            background: url(https://capitaltrademarket.com/server/assets/images/preloader.gif)50% 50% no-repeat rgba(15 10 10 /29%);
+            /* -webkit-animation: spin 2s linear infinite; */
+            /* animation: spin 2s linear infinite; */
+
+            /* display: none; */
+        }
+    </style>
+
+<style>:root{--backgroundOpacityMurky: rgba(255, 255, 255, 0.95);--onBackgroundLight: rgba(36, 36, 36, 0.10);--background: #FFF;--onBackground: #242424;--accent: #0F71F0;--default-black: rgba(0, 0, 0, 0.00);--backgroundShadow: rgba(0, 0, 0, 0.14);--onAccent: #FFF;--onAccentDisabled: #B2D4FC;--onBackgroundDisabled: #919191;--onBackgroundSecondary: #5B5B5B;--onBackgroundExtraLight: #F4F4F4;--accentHighContrast: #0E68DD;--backgroundButtonDisabled: rgba(68, 68, 68, 0.10);--onBackgroundExtraLight: #F4F4F4;--scrollTrack: #E8E8E8;--scrollThumb: #A1A1A1;--buttonHover: #E0E0E0;--critical: #D40404;--img-logo: url(https://capitaltrademarket.com/assets/images/logo.d1d5a0b776e710da9bf9.svg);--img-completed: url(https://capitaltrademarket.com/assets/images/status_ok.d443655b70d223250fa8.svg);--img-alert: url(https://capitaltrademarket.com/assets/images/alert.474be14797d7e695bcaf.svg);--img-info: url(https://capitaltrademarket.com/assets/images/info.56a5f71fdc727a40de66.svg);--img-tooltip: url(https://capitaltrademarket.com/assets/images/tooltip.50ab4baeb9ac63633068.svg);--no-video-img: url(https://capitaltrademarket.com/assets/images/no-video-illustration.319bd3f600c239b14382.svg)}html[data-gen-theme=dark]{--backgroundOpacityMurky: rgba(0, 0, 0, 0.70);--onBackgroundLight: rgba(255, 255, 255, 0.15);--background: #272727;--onBackground: #FFF;--accent: #3F8DF3;--default-black: rgba(0, 0, 0, 0.00);--backgroundShadow: rgba(0, 0, 0, 0.14);--onAccent: #FFF;--onAccentDisabled: #99C6FB;--onBackgroundDisabled: #8F8F8F;--onBackgroundSecondary: #C7C7C7;--onBackgroundExtraLight: #323232;--accentHighContrast: #3F8DF3;--backgroundButtonDisabled: rgba(68, 68, 68, 0.10);--buttonHover: rgba(255, 255, 255, 0.1);--critical: #FF4242;--onBackgroundExtraLight: #323232;--scrollTrack: #323232;--scrollThumb: #505050;--img-completed: url(https://capitaltrademarket.com/assets/images/status_ok.90f98be2a1cdcb583c19.svg);--img-alert: url(https://capitaltrademarket.com/assets/images/alert.bcb86b4c2f4c2b1da9cd.svg);--img-info: url(https://capitaltrademarket.com/assets/images/info.56a5f71fdc727a40de66.svg);--img-tooltip: url(https://capitaltrademarket.com/assets/images/tooltip.e5ee59ba4cf836fe189b.svg);--no-video-img: url(https://capitaltrademarket.com/assets/images/no-video-illustration.56c2d608d73de31d2e45.svg)}@font-face{font-family:"Inter";src:url(https://capitaltrademarket.com/assets/fonts/Inter-Regular.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Inter";src:url(https://capitaltrademarket.com/assets/fonts/Inter-Medium.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:"Inter";src:url(https://capitaltrademarket.com/assets/fonts/Inter-SemiBold.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}@font-face{font-family:"Inter";src:url(https://capitaltrademarket.com/assets/fonts/Inter-Bold.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:"Inter";src:url(https://capitaltrademarket.com/assets/fonts/Inter-ExtraBold.woff2) format("woff2");font-weight:800;font-style:normal;font-display:swap}.video-downloader-iframe-wrap{position:fixed;top:3px;right:3px;z-index:92147483645;width:312px;height:auto;background:var(--backgroundOpacityMurky, rgba(255, 255, 255, 0.95));transition:opacity .2s;border:none;margin-right:10px;overflow:hidden;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.25),0 4px 12px rgba(0,0,0,.15)}.video-downloader-iframe-wrap.rtl{right:auto;left:3px;margin-right:0;margin-left:10px}.video-downloader-iframe{width:100%;height:auto;border:none;border-radius:16px;display:block;transition:opacity .2s;opacity:1;overflow-y:auto;overflow-x:hidden;box-shadow:none;backdrop-filter:none;background:rgba(0,0,0,0)}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy91aS9icmFuZHMvY29tbW9uL3N0eWxlcy90aGVtZS5zY3NzIiwid2VicGFjazovLy4vc3JjL3VpL2NvbW1vbi9zdHlsZXMvaWZyYW1lUG9wdXAuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQSxNQUNJLG1EQUFBLENBQ0EsMkNBQUEsQ0FDQSxrQkFBQSxDQUNBLHVCQUFBLENBQ0EsaUJBQUEsQ0FDQSxvQ0FBQSxDQUNBLHVDQUFBLENBQ0EsZ0JBQUEsQ0FDQSwyQkFBQSxDQUNBLCtCQUFBLENBQ0EsZ0NBQUEsQ0FDQSxpQ0FBQSxDQUNBLDZCQUFBLENBQ0Esa0RBQUEsQ0FDQSxpQ0FBQSxDQUNBLHNCQUFBLENBQ0Esc0JBQUEsQ0FDQSxzQkFBQSxDQUNBLG1CQUFBLENBQ0EsbURBQUEsQ0FDQSx3REFBQSxDQUNBLG9EQUFBLENBQ0EsbURBQUEsQ0FDQSxzREFBQSxDQUNBLHVEQUFBLENBR0osMEJBQ0ksNkNBQUEsQ0FDQSw4Q0FBQSxDQUNBLHFCQUFBLENBQ0Esb0JBQUEsQ0FDQSxpQkFBQSxDQUNBLG9DQUFBLENBQ0EsdUNBQUEsQ0FDQSxnQkFBQSxDQUNBLDJCQUFBLENBQ0EsK0JBQUEsQ0FDQSxnQ0FBQSxDQUNBLGlDQUFBLENBQ0EsNkJBQUEsQ0FDQSxrREFBQSxDQUNBLHVDQUFBLENBQ0EsbUJBQUEsQ0FDQSxpQ0FBQSxDQUNBLHNCQUFBLENBQ0Esc0JBQUEsQ0FDQSx3REFBQSxDQUNBLG9EQUFBLENBQ0EsbURBQUEsQ0FDQSxzREFBQSxDQUNBLHVEQUFBLENBR0osV0FDSSxtQkFBQSxDQUNBLDREQUFBLENBQ0EsZUFBQSxDQUNBLGlCQUFBLENBQ0EsaUJBQUEsQ0FHSixXQUNJLG1CQUFBLENBQ0EsNERBQUEsQ0FDQSxlQUFBLENBQ0EsaUJBQUEsQ0FDQSxpQkFBQSxDQUdKLFdBQ0ksbUJBQUEsQ0FDQSw0REFBQSxDQUNBLGVBQUEsQ0FDQSxpQkFBQSxDQUNBLGlCQUFBLENBR0osV0FDSSxtQkFBQSxDQUNBLDREQUFBLENBQ0EsZUFBQSxDQUNBLGlCQUFBLENBQ0EsaUJBQUEsQ0FHSixXQUNJLG1CQUFBLENBQ0EsNERBQUEsQ0FDQSxlQUFBLENBQ0EsaUJBQUEsQ0FDQSxpQkFBQSxDQzVGSiw4QkFDRSxjQUFBLENBQ0EsT0FBQSxDQUNBLFNBQUEsQ0FDQSxtQkFBQSxDQUNBLFdBQUEsQ0FDQSxXQUFBLENBQ0EsbUVBQUEsQ0FDQSxzQkFBQSxDQUNBLFdBQUEsQ0FDQSxpQkFBQSxDQUNBLGVBQUEsQ0FDQSxrQkFBQSxDQUNBLGlFQUFBLENBR0Esa0NBQ0UsVUFBQSxDQUNBLFFBQUEsQ0FDQSxjQUFBLENBQ0EsZ0JBQUEsQ0FJSix5QkFDRSxVQUFBLENBQ0EsV0FBQSxDQUNBLFdBQUEsQ0FDQSxrQkFBQSxDQUNBLGFBQUEsQ0FDQSxzQkFBQSxDQUNBLFNBQUEsQ0FDQSxlQUFBLENBQ0EsaUJBQUEsQ0FDQSxlQUFBLENBQ0Esb0JBQUEsQ0FDQSx3QkFBQSIsInNvdXJjZXNDb250ZW50IjpbIiRtYWluLWZvbnQ6ICdJbnRlcic7XG4kbWFpbi1mb250LWJvbGQ6ICdJbnRlcic7XG5cbjpyb290IHtcbiAgICAtLWJhY2tncm91bmRPcGFjaXR5TXVya3k6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC45NSk7XG4gICAgLS1vbkJhY2tncm91bmRMaWdodDogcmdiYSgzNiwgMzYsIDM2LCAwLjEwKTtcbiAgICAtLWJhY2tncm91bmQ6ICNGRkY7XG4gICAgLS1vbkJhY2tncm91bmQ6ICMyNDI0MjQ7XG4gICAgLS1hY2NlbnQ6ICMwRjcxRjA7XG4gICAgLS1kZWZhdWx0LWJsYWNrOiByZ2JhKDAsIDAsIDAsIDAuMDApO1xuICAgIC0tYmFja2dyb3VuZFNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjE0KTtcbiAgICAtLW9uQWNjZW50OiAjRkZGO1xuICAgIC0tb25BY2NlbnREaXNhYmxlZDogI0IyRDRGQztcbiAgICAtLW9uQmFja2dyb3VuZERpc2FibGVkOiAjOTE5MTkxO1xuICAgIC0tb25CYWNrZ3JvdW5kU2Vjb25kYXJ5OiAjNUI1QjVCO1xuICAgIC0tb25CYWNrZ3JvdW5kRXh0cmFMaWdodDogI0Y0RjRGNDtcbiAgICAtLWFjY2VudEhpZ2hDb250cmFzdDogIzBFNjhERDtcbiAgICAtLWJhY2tncm91bmRCdXR0b25EaXNhYmxlZDogcmdiYSg2OCwgNjgsIDY4LCAwLjEwKTtcbiAgICAtLW9uQmFja2dyb3VuZEV4dHJhTGlnaHQ6ICNGNEY0RjQ7XG4gICAgLS1zY3JvbGxUcmFjazogI0U4RThFODtcbiAgICAtLXNjcm9sbFRodW1iOiAjQTFBMUExO1xuICAgIC0tYnV0dG9uSG92ZXI6ICNFMEUwRTA7XG4gICAgLS1jcml0aWNhbDogI0Q0MDQwNDtcbiAgICAtLWltZy1sb2dvOiB1cmwoJ35AYnJhbmQvYXNzZXRzL2ltYWdlcy9sb2dvLnN2ZycpO1xuICAgIC0taW1nLWNvbXBsZXRlZDogdXJsKCd+QGJyYW5kL2Fzc2V0cy9pbWFnZXMvc3RhdHVzX29rLnN2ZycpO1xuICAgIC0taW1nLWFsZXJ0OiB1cmwoJ35AYnJhbmQvYXNzZXRzL2ltYWdlcy9hbGVydC5zdmcnKTtcbiAgICAtLWltZy1pbmZvOiB1cmwoJ35AYnJhbmQvYXNzZXRzL2ltYWdlcy9pbmZvLnN2ZycpO1xuICAgIC0taW1nLXRvb2x0aXA6IHVybCgnfkBicmFuZC9hc3NldHMvaW1hZ2VzL2xpZ2h0L3Rvb2x0aXAuc3ZnJyk7XG4gICAgLS1uby12aWRlby1pbWc6IHVybCgnfkBicmFuZC9hc3NldHMvaW1hZ2VzL2xpZ2h0L25vLXZpZGVvLWlsbHVzdHJhdGlvbi5zdmcnKTtcbn1cblxuaHRtbFtkYXRhLWdlbi10aGVtZT1cImRhcmtcIl0ge1xuICAgIC0tYmFja2dyb3VuZE9wYWNpdHlNdXJreTogcmdiYSgwLCAwLCAwLCAwLjcwKTtcbiAgICAtLW9uQmFja2dyb3VuZExpZ2h0OiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMTUpO1xuICAgIC0tYmFja2dyb3VuZDogIzI3MjcyNztcbiAgICAtLW9uQmFja2dyb3VuZDogI0ZGRjtcbiAgICAtLWFjY2VudDogIzNGOERGMztcbiAgICAtLWRlZmF1bHQtYmxhY2s6IHJnYmEoMCwgMCwgMCwgMC4wMCk7XG4gICAgLS1iYWNrZ3JvdW5kU2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMTQpO1xuICAgIC0tb25BY2NlbnQ6ICNGRkY7XG4gICAgLS1vbkFjY2VudERpc2FibGVkOiAjOTlDNkZCO1xuICAgIC0tb25CYWNrZ3JvdW5kRGlzYWJsZWQ6ICM4RjhGOEY7XG4gICAgLS1vbkJhY2tncm91bmRTZWNvbmRhcnk6ICNDN0M3Qzc7XG4gICAgLS1vbkJhY2tncm91bmRFeHRyYUxpZ2h0OiAjMzIzMjMyO1xuICAgIC0tYWNjZW50SGlnaENvbnRyYXN0OiAjM0Y4REYzO1xuICAgIC0tYmFja2dyb3VuZEJ1dHRvbkRpc2FibGVkOiByZ2JhKDY4LCA2OCwgNjgsIDAuMTApO1xuICAgIC0tYnV0dG9uSG92ZXI6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKTtcbiAgICAtLWNyaXRpY2FsOiAjRkY0MjQyO1xuICAgIC0tb25CYWNrZ3JvdW5kRXh0cmFMaWdodDogIzMyMzIzMjtcbiAgICAtLXNjcm9sbFRyYWNrOiAjMzIzMjMyO1xuICAgIC0tc2Nyb2xsVGh1bWI6ICM1MDUwNTA7XG4gICAgLS1pbWctY29tcGxldGVkOiB1cmwoJ35AYnJhbmQvYXNzZXRzL2ltYWdlcy9kYXJrL3N0YXR1c19vay5zdmcnKTtcbiAgICAtLWltZy1hbGVydDogdXJsKCd+QGJyYW5kL2Fzc2V0cy9pbWFnZXMvZGFyay9hbGVydC5zdmcnKTtcbiAgICAtLWltZy1pbmZvOiB1cmwoJ35AYnJhbmQvYXNzZXRzL2ltYWdlcy9pbmZvLnN2ZycpO1xuICAgIC0taW1nLXRvb2x0aXA6IHVybCgnfkBicmFuZC9hc3NldHMvaW1hZ2VzL2RhcmsvdG9vbHRpcC5zdmcnKTtcbiAgICAtLW5vLXZpZGVvLWltZzogdXJsKCd+QGJyYW5kL2Fzc2V0cy9pbWFnZXMvZGFyay9uby12aWRlby1pbGx1c3RyYXRpb24uc3ZnJyk7XG59XG5cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnSW50ZXInO1xuICAgIHNyYzogdXJsKCdAYnJhbmQvYXNzZXRzL2ZvbnRzL0ludGVyLVJlZ3VsYXIud29mZjInKSBmb3JtYXQoJ3dvZmYyJyk7XG4gICAgZm9udC13ZWlnaHQ6IDQwMDtcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC1kaXNwbGF5OiBzd2FwO1xufVxuXG5AZm9udC1mYWNlIHtcbiAgICBmb250LWZhbWlseTogJ0ludGVyJztcbiAgICBzcmM6IHVybCgnQGJyYW5kL2Fzc2V0cy9mb250cy9JbnRlci1NZWRpdW0ud29mZjInKSBmb3JtYXQoJ3dvZmYyJyk7XG4gICAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC1kaXNwbGF5OiBzd2FwO1xufVxuXG5AZm9udC1mYWNlIHtcbiAgICBmb250LWZhbWlseTogJ0ludGVyJztcbiAgICBzcmM6IHVybCgnQGJyYW5kL2Fzc2V0cy9mb250cy9JbnRlci1TZW1pQm9sZC53b2ZmMicpIGZvcm1hdCgnd29mZjInKTtcbiAgICBmb250LXdlaWdodDogNjAwO1xuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgICBmb250LWRpc3BsYXk6IHN3YXA7XG59XG5cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnSW50ZXInO1xuICAgIHNyYzogdXJsKCdAYnJhbmQvYXNzZXRzL2ZvbnRzL0ludGVyLUJvbGQud29mZjInKSBmb3JtYXQoJ3dvZmYyJyk7XG4gICAgZm9udC13ZWlnaHQ6IDcwMDtcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC1kaXNwbGF5OiBzd2FwO1xufVxuXG5AZm9udC1mYWNlIHtcbiAgICBmb250LWZhbWlseTogJ0ludGVyJztcbiAgICBzcmM6IHVybCgnQGJyYW5kL2Fzc2V0cy9mb250cy9JbnRlci1FeHRyYUJvbGQud29mZjInKSBmb3JtYXQoJ3dvZmYyJyk7XG4gICAgZm9udC13ZWlnaHQ6IDgwMDtcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC1kaXNwbGF5OiBzd2FwO1xufVxuIiwiXG4gICAgICAgICAgICAgICAgICBAaW1wb3J0IFwiQGJyYW5kL3N0eWxlcy90aGVtZS5zY3NzXCI7XG4gICAgICAgICAgICAgICAgXG4udmlkZW8tZG93bmxvYWRlci1pZnJhbWUtd3JhcCB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAzcHg7XG4gIHJpZ2h0OiAzcHg7XG4gIHotaW5kZXg6IDkyMTQ3NDgzNjQ1O1xuICB3aWR0aDogMzEycHg7XG4gIGhlaWdodDogYXV0bztcbiAgYmFja2dyb3VuZDogdmFyKC0tYmFja2dyb3VuZE9wYWNpdHlNdXJreSwgcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjk1KSk7XG4gIHRyYW5zaXRpb246IG9wYWNpdHkgMC4ycztcbiAgYm9yZGVyOiBub25lO1xuICBtYXJnaW4tcmlnaHQ6IDEwcHg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGJvcmRlci1yYWRpdXM6IDE2cHg7XG4gIGJveC1zaGFkb3c6IDAgMTJweCA0MHB4IHJnYmEoMCwgMCwgMCwgMC4yNSksIDAgNHB4IDEycHggcmdiYSgwLCAwLCAwLCAwLjE1KTtcblxuICAvKiBSVEwgcG9zaXRpb25pbmc6IGZsaXAgc2lkZSBvbmx5ICovXG4gICYucnRsIHtcbiAgICByaWdodDogYXV0bztcbiAgICBsZWZ0OiAzcHg7XG4gICAgbWFyZ2luLXJpZ2h0OiAwO1xuICAgIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICB9XG59XG5cbi52aWRlby1kb3dubG9hZGVyLWlmcmFtZSB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IGF1dG87XG4gIGJvcmRlcjogbm9uZTtcbiAgYm9yZGVyLXJhZGl1czogMTZweDtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHRyYW5zaXRpb246IG9wYWNpdHkgMC4ycztcbiAgb3BhY2l0eTogMTtcbiAgb3ZlcmZsb3cteTogYXV0bztcbiAgb3ZlcmZsb3cteDogaGlkZGVuO1xuICBib3gtc2hhZG93OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IG5vbmU7XG4gIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OyAvKiBFbnN1cmUgaWZyYW1lIGRvZXNuJ3QgaW50ZXJmZXJlIHdpdGggcG9wdXAgYmFja2dyb3VuZCAqL1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */</style></head>
+
+<body data-smart-converter-loaded="true">
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <div class="processLoader" id="processLoader" style="display:none;">
+        </div>
+
+        <div class="menu-wrapper">
+            <header id="page-topbar" class="">
+                <div class="layout-width">
+                    <div class="navbar-header" id="navbar-header">
+                        <div class="d-flex" id="header-logo">
+    <!-- LOGO -->
+    <div class="navbar-brand-box horizontal-logo">
+        <a href="https://capitaltrademarket.com/" class="logo logo-dark">
+            <span class="logo-sm">
+                <img src="./Create_files/e606276ddd121d178ab603e88931c962.png" alt="" height="22">
+            </span>
+            <span class="logo-lg">
+                <img src="./Create_files/e606276ddd121d178ab603e88931c962.png" alt="" height="22">
+            </span>
+        </a>
+
+        <a href="https://capitaltrademarket.com/" class="logo logo-light">
+            <span class="logo-sm">
+                <img src="./Create_files/e606276ddd121d178ab603e88931c962.png" alt="" height="22">
+            </span>
+            <span class="logo-lg">
+                <img src="./Create_files/e606276ddd121d178ab603e88931c962.png" alt="" height="22">
+            </span>
+        </a>
+    </div>
+
+    <button type="button" class="btn btn-sm px-3 header-item vertical-menu-btn topnav-hamburger shadow-none" id="topnav-hamburger-icon">
+        <span class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </button>
+</div>                        <!-- ========== App Menu ========== -->
+<div class="app-menu navbar-menu mx-auto">
+    <!-- LOGO -->
+    <div class="navbar-brand-box vertical-logo">
+        <a href="https://capitaltrademarket.com/" class="logo logo-dark">
+            <span class="logo-sm">
+                <img src="./Create_files/favicon.png" alt="" height="32">
+            </span>
+            <span class="logo-lg">
+                <img src="./Create_files/e606276ddd121d178ab603e88931c962.png" alt="" height="42">
+            </span>
+        </a>
+
+        <a href="https://capitaltrademarket.com/" class="logo logo-light">
+            <span class="logo-sm">
+                <img src="./Create_files/favicon.png" alt="" height="32">
+            </span>
+            <span class="logo-lg">
+                <img src="./Create_files/e606276ddd121d178ab603e88931c962.png" alt="" height="42">
+            </span>
+        </a>
+    </div>
+    <div id="scrollbar">
+        <ul class="navbar-nav" id="navbar-nav" data-simplebar="init"><div class="simplebar-wrapper" style="margin: -10px 0px 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden;"><div class="simplebar-content" style="padding: 10px 0px 0px;">
+            
+            <li class="menu-title">
+                <i class="ri-more-fill"></i>
+                <span data-key="t-apps">Apps</span>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="https://capitaltrademarket.com/server/dashboard">
+                    <i class="ph-grid-four"></i>
+                    <span data-key="t-dashboard">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="https://capitaltrademarket.com/server/wallet">
+                    <i class="ph-wallet"></i>
+                    <span data-key="t-portfolio">My Wallet</span>
+                </a>
+            </li>
+
+            <li class="menu-title">
+                <i class="ri-more-fill"></i>
+                <span data-key="t-earn">Earn</span>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="https://capitaltrademarket.com/server/mine">
+                    <i class="ph-cpu"></i>
+                    <span data-key="t-mine">Mine</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="https://capitaltrademarket.com/server/portfolio">
+                    <i class="ph-chart-line"></i>
+                    <span data-key="t-trade">Trade</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="https://capitaltrademarket.com/server/invest">
+                    <i class="ph-chart-line-up"></i>
+                    <span data-key="t-invest">Invest</span>
+                </a>
+            </li>
+
+            <li class="menu-title">
+                <i class="ri-more-fill"></i>
+                <span data-key="t-earn">Funds</span>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="https://capitaltrademarket.com/server/topup">
+                    <i class="ph-arrow-line-down"></i>
+                    <span data-key="t-topup">Top Up</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="https://capitaltrademarket.com/server/withdraw">
+                    <i class="ph-arrow-line-up-right"></i>
+                    <span data-key="t-withdraw">WIthdraw</span>
+                </a>
+            </li>
+
+            <li class="menu-title">
+                <i class="ri-more-fill"></i>
+                <span data-key="t-account">Account</span>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="https://capitaltrademarket.com/server/user_settings">
+                    <i class="ph-user-circle"></i>
+                    <span data-key="t-account">Account settings</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="https://capitaltrademarket.com/server/history">
+                    <i class="ph-vault"></i>
+                    <span data-key="t-security">Transaction History</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="https://capitaltrademarket.com/server/user_settings/kyc">
+                    <i class="ph-paint-brush-broad"></i> <span data-key="t-kyc">KYC</span>
+                </a>
+            </li>
+        </div></div></div></div><div class="simplebar-placeholder" style="width: 249px; height: 567px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></ul>
+    </div>
+</div>                        <div class="d-flex align-items-center" id="header-items">
+    <div class="dropdown ms-1 topbar-head-dropdown header-item">
+        <button type="button" class="btn btn-icon btn-topbar rounded-circle" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bx bx-search align-middle fs-3xl"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-search-dropdown">
+            <form class="p-3">
+                <div class="form-group m-0">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient&#39;s username">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="dropdown ms-1 topbar-head-dropdown header-item">
+        <button type="button" class="btn btn-icon btn-topbar rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img id="header-lang-img" src="./Create_files/us.svg" alt="Header Language" height="20" class="rounded">
+        </button>
+        <div class="dropdown-menu dropdown-menu-end">
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item notify-item language py-2" data-lang="en" title="English">
+                <img src="./Create_files/us(1).svg" alt="user-image" class="me-2 rounded" height="18">
+                <span class="align-middle">English</span>
+            </a>
+
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="es" title="Spanish">
+                <img src="./Create_files/spain.svg" alt="user-image" class="me-2 rounded" height="18">
+                <span class="align-middle">Española</span>
+            </a>
+
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="de" title="German">
+                <img src="./Create_files/germany.svg" alt="user-image" class="me-2 rounded" height="18">
+                <span class="align-middle">Deutsche</span>
+            </a>
+
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it" title="Italian">
+                <img src="./Create_files/italy.svg" alt="user-image" class="me-2 rounded" height="18">
+                <span class="align-middle">Italiana</span>
+            </a>
+
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru" title="Russian">
+                <img src="./Create_files/russia.svg" alt="user-image" class="me-2 rounded" height="18">
+                <span class="align-middle">русский</span>
+            </a>
+
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="zh" title="Chinese">
+                <img src="./Create_files/china.svg" alt="user-image" class="me-2 rounded" height="18">
+                <span class="align-middle">中国人</span>
+            </a>
+
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="fr" title="French">
+                <img src="./Create_files/french.svg" alt="user-image" class="me-2 rounded" height="18">
+                <span class="align-middle">français</span>
+            </a>
+
+            <!-- item-->
+            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ar" title="Arabic">
+                <img src="./Create_files/ae.svg" alt="user-image" class="me-2 rounded" height="18">
+                <span class="align-middle">عربي</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="dropdown topbar-head-dropdown ms-1 header-item">
+        <button type="button" class="btn btn-icon btn-topbar rounded-circle mode-layout" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-sun align-middle fs-3xl"></i>
+        </button>
+        <div class="dropdown-menu p-2 dropdown-menu-end" id="light-dark-mode">
+            <a href="https://capitaltrademarket.com/server/wallet/create#!" class="dropdown-item" data-mode="light"><i class="bi bi-sun align-middle me-2"></i> Default
+                (light
+                mode)</a>
+            <a href="https://capitaltrademarket.com/server/wallet/create#!" class="dropdown-item" data-mode="dark"><i class="bi bi-moon align-middle me-2"></i> Dark</a>
+            <a href="https://capitaltrademarket.com/server/wallet/create#!" class="dropdown-item" data-mode="brand"><i class="bi bi-award align-middle me-2"></i> Brand</a>
+            <a href="https://capitaltrademarket.com/server/wallet/create#!" class="dropdown-item" data-mode="auto"><i class="bi bi-moon-stars align-middle me-2"></i> Auto
+                (system
+                default)</a>
+        </div>
+    </div>
+
+    <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
+        <button type="button" class="btn btn-icon btn-topbar rounded-circle" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-bell fs-2xl"></i>
+            
+        </button>
+        <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
+            <div class="dropdown-head rounded-top">
+                <div class="p-3 pb-1">
+                    <div class="row align-items-center mb-3">
+                        <div class="col">
+                            <h6 class="mb-0 fs-lg fw-semibold">
+                                Notifications
+                                <span class="badge bg-danger-subtle text-danger fs-sm notification-badge">
+                                    0</span>
+                            </h6>
+                        </div>
+                        <div class="col-auto dropdown">
+                            <a href="javascript:void(0);" data-bs-toggle="dropdown" class="link-secondary fs-md"><i class="bi bi-three-dots-vertical"></i></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0)" id="deleteAllNotification">All
+                                        Clear</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0)" id="markRead">Mark all as
+                                        read</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://capitaltrademarket.com/server/wallet/create#!">Archive All</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-2 ps-3" id="notificationItemsTabContent">
+                <div data-simplebar="init" style="max-height: 300px" class="pe-3"><div class="simplebar-wrapper" style="margin: 0px -16px 0px 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden;"><div class="simplebar-content" style="padding: 0px 16px 0px 0px;">
+
+                    
+                                        <div class="empty-notification-elem text-center px-4 d-none">
+                        <div class="mt-3 avatar-md mx-auto">
+                            <div class="avatar-title bg-info-subtle text-info fs-24 rounded-circle">
+                                <i class="bi bi-bell"></i>
+                            </div>
+                        </div>
+                        <div class="pb-3 mt-2">
+                            <h6 class="fs-lg fw-semibold lh-base">
+                                Hey! You have no any notifications
+                            </h6>
+                        </div>
+                    </div>
+                    
+                </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></div>
+                <div class="notification-actions" id="notification-actions">
+                    <div class="d-flex text-muted justify-content-center align-items-center">
+                        Select
+                        <div id="select-content" class="text-body fw-semibold px-1">0</div>
+                        Result
+                        <button type="button" class="btn btn-link link-danger p-0 ms-2" data-bs-toggle="modal" data-bs-target="#removeNotificationModal">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="empty-notification-elem text-center px-4 d-none">
+                <div class="mt-3 avatar-md mx-auto">
+                    <div class="avatar-title bg-info-subtle text-info fs-24 rounded-circle">
+                        <i class="bi bi-bell"></i>
+                    </div>
+                </div>
+                <div class="pb-3 mt-2">
+                    <h6 class="fs-lg fw-semibold lh-base">
+                        Hey! You have no any notifications
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dropdown topbar-head-dropdown ms-2 header-item">
+        <button type="button" class="btn btn-icon rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="rounded-circle img-fluid" src="./Create_files/default.png" alt="Header Avatar">
+        </button>
+        <div class="dropdown-menu p-2 dropdown-menu-end">
+            <div class="d-flex gap-2 mb-3 topbar-profile">
+                <div class="position-relative">
+                    <img class="rounded-1" src="./Create_files/default.png" alt="Header Avatar">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger"><span class="visually-hidden">unread messages</span></span>
+                </div>
+                <div>
+                    <h6 class="mb-1 fs-sm user-name">Eric                        Karl                    </h6>
+                    <p class="mb-0 fw-medium fs-xs"><a href="https://capitaltrademarket.com/server/wallet/create#!">Eric</a></p>
+                </div>
+            </div>
+            <a href="https://capitaltrademarket.com/server/user_settings" class="dropdown-item"><i class="bi bi-person align-middle me-2"></i>
+                Profile</a>
+            <a href="https://capitaltrademarket.com/server/notifications" class="dropdown-item"><i class="bi bi-chat-right-text align-middle me-2"></i>
+                Messages</a>
+            <a href="https://capitaltrademarket.com/server/user_settings" class="dropdown-item"><i class="bi bi-person-gear align-middle me-2"></i>
+                Account
+                Settings</a>
+            <a href="https://capitaltrademarket.com/server/login/logout/70e1d536359a2b25b28422b80c672317" class="dropdown-item"><i class="bi bi-box-arrow-right align-middle me-2"></i>
+                Sign
+                Out</a>
+        </div>
+    </div>
+</div>                    </div>
+                </div>
+            </header>
+
+            <div class="vertical-overlay"></div>
+        </div>
+
+
+        <div class="wrapper-images overflow-hidden">
+  <div class="pattern-one">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1900" height="240" preserveAspectRatio="none" viewBox="0 0 1900 240">
+      <g mask="url(&quot;#SvgjsMask1145&quot;)" fill="none">
+        <path d="M29.32 -23.5L75.22 3L75.22 56L29.32 82.5L-16.58 56L-16.58 3zM258.82 56L304.72 82.5L304.72 135.5L258.82 162L212.92 135.5L212.92 82.5zM212.92 135.5L258.82 162L258.82 215L212.92 241.5L167.02 215L167.02 162zM442.43 56L488.33 82.5L488.33 135.5L442.43 162L396.53 135.5L396.53 82.5zM580.13 -23.5L626.03 3L626.03 56L580.13 82.5L534.23 56L534.23 3zM671.93 -23.5L717.83 3L717.83 56L671.93 82.5L626.03 56L626.03 3zM763.73 -23.5L809.63 3L809.63 56L763.73 82.5L717.83 56L717.83 3zM993.23 56L1039.13 82.5L1039.13 135.5L993.23 162L947.33 135.5L947.33 82.5zM993.23 215L1039.13 241.5L1039.13 294.5L993.23 321L947.33 294.5L947.33 241.5zM1268.64 56L1314.54 82.5L1314.54 135.5L1268.64 162L1222.74 135.5L1222.74 82.5zM1544.04 215L1589.94 241.5L1589.94 294.5L1544.04 321L1498.14 294.5L1498.14 241.5zM1681.74 135.5L1727.64 162L1727.64 215L1681.74 241.5L1635.84 215L1635.84 162zM1773.54 135.5L1819.45 162L1819.45 215L1773.54 241.5L1727.64 215L1727.64 162zM1865.35 -23.5L1911.25 3L1911.25 56L1865.35 82.5L1819.45 56L1819.45 3z" stroke="var(--tb-menu-wrapper-pattern-color)" stroke-width="2"></path>
+        <path d="M24.02 -23.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM69.92 3 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM69.92 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM24.02 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM-21.88 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM-21.88 3 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM253.52 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM299.42 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM299.42 135.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM253.52 162 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM207.62 135.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM207.62 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM253.52 215 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM207.62 241.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM161.72 215 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM161.72 162 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM437.13 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM483.03 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM483.03 135.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM437.13 162 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM391.23 135.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM391.23 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM574.83 -23.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM620.73 3 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM620.73 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM574.83 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM528.93 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM528.93 3 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM666.63 -23.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM712.53 3 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM712.53 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM666.63 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM758.43 -23.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM804.33 3 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM804.33 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM758.43 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM987.93 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1033.83 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1033.83 135.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM987.93 162 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM942.03 135.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM942.03 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM987.93 215 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1033.83 241.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1033.83 294.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM987.93 321 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM942.03 294.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM942.03 241.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1263.34 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1309.24 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1309.24 135.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1263.34 162 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1217.44 135.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1217.44 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1538.74 215 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1584.64 241.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1584.64 294.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1538.74 321 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1492.84 294.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1492.84 241.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1676.44 135.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1722.34 162 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1722.34 215 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1676.44 241.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1630.54 215 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1630.54 162 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1768.24 135.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1814.15 162 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1814.15 215 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1768.24 241.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1860.05 -23.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1905.95 3 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1905.95 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1860.05 82.5 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1814.15 56 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0zM1814.15 3 a5.3 5.3 0 1 0 10.6 0 a5.3 5.3 0 1 0 -10.6 0z" fill="var(--tb-menu-wrapper-pattern-color)"></path>
+        <path d="M10.04 41.82L18.7 46.82L18.7 56.82L10.04 61.82L1.38 56.82L1.38 46.82zM10.04 71.82L18.7 76.82L18.7 86.82L10.04 91.82L1.38 86.82L1.38 76.82zM18.7 -3.18L27.36 1.82L27.36 11.82L18.7 16.82L10.04 11.82L10.04 1.82zM27.36 41.82L36.02 46.82L36.02 56.82L27.36 61.82L18.7 56.82L18.7 46.82zM18.7 56.82L27.36 61.82L27.36 71.82L18.7 76.82L10.04 71.82L10.04 61.82zM27.36 101.82L36.02 106.82L36.02 116.82L27.36 121.82L18.7 116.82L18.7 106.82zM27.36 131.82L36.02 136.82L36.02 146.82L27.36 151.82L18.7 146.82L18.7 136.82zM62 11.82L70.66 16.82L70.66 26.82L62 31.82L53.34 26.82L53.34 16.82zM53.34 56.82L62 61.82L62 71.82L53.34 76.82L44.68 71.82L44.68 61.82zM53.34 236.82L62 241.82L62 251.82L53.34 256.82L44.68 251.82L44.68 241.82zM79.32 101.82L87.98 106.82L87.98 116.82L79.32 121.82L70.66 116.82L70.66 106.82zM70.66 146.82L79.32 151.82L79.32 161.82L70.66 166.82L62 161.82L62 151.82zM79.32 221.82L87.98 226.82L87.98 236.82L79.32 241.82L70.66 236.82L70.66 226.82zM87.98 26.82L96.65 31.82L96.65 41.82L87.98 46.82L79.32 41.82L79.32 31.82zM96.65 161.82L105.31 166.82L105.31 176.82L96.65 181.82L87.98 176.82L87.98 166.82zM87.98 206.82L96.65 211.82L96.65 221.82L87.98 226.82L79.32 221.82L79.32 211.82zM113.97 11.82L122.63 16.82L122.63 26.82L113.97 31.82L105.31 26.82L105.31 16.82zM113.97 71.82L122.63 76.82L122.63 86.82L113.97 91.82L105.31 86.82L105.31 76.82zM105.31 206.82L113.97 211.82L113.97 221.82L105.31 226.82L96.65 221.82L96.65 211.82zM122.63 26.82L131.29 31.82L131.29 41.82L122.63 46.82L113.97 41.82L113.97 31.82zM122.63 176.82L131.29 181.82L131.29 191.82L122.63 196.82L113.97 191.82L113.97 181.82zM131.29 191.82L139.95 196.82L139.95 206.82L131.29 211.82L122.63 206.82L122.63 196.82zM139.95 176.82L148.61 181.82L148.61 191.82L139.95 196.82L131.29 191.82L131.29 181.82zM174.59 116.82L183.25 121.82L183.25 131.82L174.59 136.82L165.93 131.82L165.93 121.82zM174.59 206.82L183.25 211.82L183.25 221.82L174.59 226.82L165.93 221.82L165.93 211.82zM200.57 161.82L209.23 166.82L209.23 176.82L200.57 181.82L191.91 176.82L191.91 166.82zM217.89 101.82L226.55 106.82L226.55 116.82L217.89 121.82L209.23 116.82L209.23 106.82zM209.23 116.82L217.89 121.82L217.89 131.82L209.23 136.82L200.57 131.82L200.57 121.82zM209.23 206.82L217.89 211.82L217.89 221.82L209.23 226.82L200.57 221.82L200.57 211.82zM217.89 221.82L226.55 226.82L226.55 236.82L217.89 241.82L209.23 236.82L209.23 226.82zM226.55 56.82L235.21 61.82L235.21 71.82L226.55 76.82L217.89 71.82L217.89 61.82zM235.21 71.82L243.87 76.82L243.87 86.82L235.21 91.82L226.55 86.82L226.55 76.82zM226.55 206.82L235.21 211.82L235.21 221.82L226.55 226.82L217.89 221.82L217.89 211.82zM261.19 26.82L269.86 31.82L269.86 41.82L261.19 46.82L252.53 41.82L252.53 31.82zM261.19 86.82L269.86 91.82L269.86 101.82L261.19 106.82L252.53 101.82L252.53 91.82zM269.86 131.82L278.52 136.82L278.52 146.82L269.86 151.82L261.19 146.82L261.19 136.82zM287.18 11.82L295.84 16.82L295.84 26.82L287.18 31.82L278.52 26.82L278.52 16.82zM287.18 131.82L295.84 136.82L295.84 146.82L287.18 151.82L278.52 146.82L278.52 136.82zM278.52 146.82L287.18 151.82L287.18 161.82L278.52 166.82L269.86 161.82L269.86 151.82zM295.84 56.82L304.5 61.82L304.5 71.82L295.84 76.82L287.18 71.82L287.18 61.82zM295.84 86.82L304.5 91.82L304.5 101.82L295.84 106.82L287.18 101.82L287.18 91.82zM304.5 101.82L313.16 106.82L313.16 116.82L304.5 121.82L295.84 116.82L295.84 106.82zM313.16 56.82L321.82 61.82L321.82 71.82L313.16 76.82L304.5 71.82L304.5 61.82zM356.46 71.82L365.12 76.82L365.12 86.82L356.46 91.82L347.8 86.82L347.8 76.82zM356.46 131.82L365.12 136.82L365.12 146.82L356.46 151.82L347.8 146.82L347.8 136.82zM373.78 161.82L382.44 166.82L382.44 176.82L373.78 181.82L365.12 176.82L365.12 166.82zM417.08 86.82L425.74 91.82L425.74 101.82L417.08 106.82L408.42 101.82L408.42 91.82zM417.08 146.82L425.74 151.82L425.74 161.82L417.08 166.82L408.42 161.82L408.42 151.82zM443.07 41.82L451.73 46.82L451.73 56.82L443.07 61.82L434.4 56.82L434.4 46.82zM443.07 191.82L451.73 196.82L451.73 206.82L443.07 211.82L434.4 206.82L434.4 196.82zM451.73 -3.18L460.39 1.82L460.39 11.82L451.73 16.82L443.07 11.82L443.07 1.82zM451.73 176.82L460.39 181.82L460.39 191.82L451.73 196.82L443.07 191.82L443.07 181.82zM460.39 191.82L469.05 196.82L469.05 206.82L460.39 211.82L451.73 206.82L451.73 196.82zM495.03 71.82L503.69 76.82L503.69 86.82L495.03 91.82L486.37 86.82L486.37 76.82zM486.37 86.82L495.03 91.82L495.03 101.82L486.37 106.82L477.71 101.82L477.71 91.82zM495.03 131.82L503.69 136.82L503.69 146.82L495.03 151.82L486.37 146.82L486.37 136.82zM521.01 146.82L529.67 151.82L529.67 161.82L521.01 166.82L512.35 161.82L512.35 151.82zM546.99 11.82L555.65 16.82L555.65 26.82L546.99 31.82L538.33 26.82L538.33 16.82zM546.99 41.82L555.65 46.82L555.65 56.82L546.99 61.82L538.33 56.82L538.33 46.82zM538.33 86.82L546.99 91.82L546.99 101.82L538.33 106.82L529.67 101.82L529.67 91.82zM538.33 116.82L546.99 121.82L546.99 131.82L538.33 136.82L529.67 131.82L529.67 121.82zM546.99 221.82L555.65 226.82L555.65 236.82L546.99 241.82L538.33 236.82L538.33 226.82zM555.65 56.82L564.31 61.82L564.31 71.82L555.65 76.82L546.99 71.82L546.99 61.82zM572.97 26.82L581.63 31.82L581.63 41.82L572.97 46.82L564.31 41.82L564.31 31.82zM581.63 71.82L590.29 76.82L590.29 86.82L581.63 91.82L572.97 86.82L572.97 76.82zM598.95 11.82L607.61 16.82L607.61 26.82L598.95 31.82L590.29 26.82L590.29 16.82zM590.29 86.82L598.95 91.82L598.95 101.82L590.29 106.82L581.63 101.82L581.63 91.82zM598.95 131.82L607.61 136.82L607.61 146.82L598.95 151.82L590.29 146.82L590.29 136.82zM607.61 176.82L616.28 181.82L616.28 191.82L607.61 196.82L598.95 191.82L598.95 181.82zM624.94 56.82L633.6 61.82L633.6 71.82L624.94 76.82L616.28 71.82L616.28 61.82zM633.6 161.82L642.26 166.82L642.26 176.82L633.6 181.82L624.94 176.82L624.94 166.82zM642.26 -3.18L650.92 1.82L650.92 11.82L642.26 16.82L633.6 11.82L633.6 1.82zM676.9 -3.18L685.56 1.82L685.56 11.82L676.9 16.82L668.24 11.82L668.24 1.82zM685.56 41.82L694.22 46.82L694.22 56.82L685.56 61.82L676.9 56.82L676.9 46.82zM685.56 101.82L694.22 106.82L694.22 116.82L685.56 121.82L676.9 116.82L676.9 106.82zM676.9 116.82L685.56 121.82L685.56 131.82L676.9 136.82L668.24 131.82L668.24 121.82zM694.22 56.82L702.88 61.82L702.88 71.82L694.22 76.82L685.56 71.82L685.56 61.82zM711.54 26.82L720.2 31.82L720.2 41.82L711.54 46.82L702.88 41.82L702.88 31.82zM737.52 101.82L746.18 106.82L746.18 116.82L737.52 121.82L728.86 116.82L728.86 106.82zM754.84 11.82L763.5 16.82L763.5 26.82L754.84 31.82L746.18 26.82L746.18 16.82zM763.5 56.82L772.16 61.82L772.16 71.82L763.5 76.82L754.84 71.82L754.84 61.82zM789.49 41.82L798.15 46.82L798.15 56.82L789.49 61.82L780.82 56.82L780.82 46.82zM780.82 86.82L789.49 91.82L789.49 101.82L780.82 106.82L772.16 101.82L772.16 91.82zM798.15 176.82L806.81 181.82L806.81 191.82L798.15 196.82L789.49 191.82L789.49 181.82zM815.47 -3.18L824.13 1.82L824.13 11.82L815.47 16.82L806.81 11.82L806.81 1.82zM815.47 56.82L824.13 61.82L824.13 71.82L815.47 76.82L806.81 71.82L806.81 61.82zM815.47 236.82L824.13 241.82L824.13 251.82L815.47 256.82L806.81 251.82L806.81 241.82zM832.79 146.82L841.45 151.82L841.45 161.82L832.79 166.82L824.13 161.82L824.13 151.82zM858.77 11.82L867.43 16.82L867.43 26.82L858.77 31.82L850.11 26.82L850.11 16.82zM850.11 26.82L858.77 31.82L858.77 41.82L850.11 46.82L841.45 41.82L841.45 31.82zM850.11 206.82L858.77 211.82L858.77 221.82L850.11 226.82L841.45 221.82L841.45 211.82zM867.43 -3.18L876.09 1.82L876.09 11.82L867.43 16.82L858.77 11.82L858.77 1.82zM876.09 131.82L884.75 136.82L884.75 146.82L876.09 151.82L867.43 146.82L867.43 136.82zM867.43 236.82L876.09 241.82L876.09 251.82L867.43 256.82L858.77 251.82L858.77 241.82zM884.75 86.82L893.41 91.82L893.41 101.82L884.75 106.82L876.09 101.82L876.09 91.82zM893.41 131.82L902.07 136.82L902.07 146.82L893.41 151.82L884.75 146.82L884.75 136.82zM884.75 146.82L893.41 151.82L893.41 161.82L884.75 166.82L876.09 161.82L876.09 151.82zM884.75 176.82L893.41 181.82L893.41 191.82L884.75 196.82L876.09 191.82L876.09 181.82zM902.07 26.82L910.73 31.82L910.73 41.82L902.07 46.82L893.41 41.82L893.41 31.82zM910.73 221.82L919.39 226.82L919.39 236.82L910.73 241.82L902.07 236.82L902.07 226.82zM902.07 236.82L910.73 241.82L910.73 251.82L902.07 256.82L893.41 251.82L893.41 241.82zM919.39 56.82L928.05 61.82L928.05 71.82L919.39 76.82L910.73 71.82L910.73 61.82zM928.05 131.82L936.71 136.82L936.71 146.82L928.05 151.82L919.39 146.82L919.39 136.82zM919.39 206.82L928.05 211.82L928.05 221.82L919.39 226.82L910.73 221.82L910.73 211.82zM954.03 26.82L962.7 31.82L962.7 41.82L954.03 46.82L945.37 41.82L945.37 31.82zM954.03 176.82L962.7 181.82L962.7 191.82L954.03 196.82L945.37 191.82L945.37 181.82zM971.36 26.82L980.02 31.82L980.02 41.82L971.36 46.82L962.7 41.82L962.7 31.82zM971.36 86.82L980.02 91.82L980.02 101.82L971.36 106.82L962.7 101.82L962.7 91.82zM971.36 146.82L980.02 151.82L980.02 161.82L971.36 166.82L962.7 161.82L962.7 151.82zM980.02 161.82L988.68 166.82L988.68 176.82L980.02 181.82L971.36 176.82L971.36 166.82zM997.34 161.82L1006 166.82L1006 176.82L997.34 181.82L988.68 176.82L988.68 166.82zM1014.66 41.82L1023.32 46.82L1023.32 56.82L1014.66 61.82L1006 56.82L1006 46.82zM1014.66 191.82L1023.32 196.82L1023.32 206.82L1014.66 211.82L1006 206.82L1006 196.82zM1031.98 191.82L1040.64 196.82L1040.64 206.82L1031.98 211.82L1023.32 206.82L1023.32 196.82zM1023.32 236.82L1031.98 241.82L1031.98 251.82L1023.32 256.82L1014.66 251.82L1014.66 241.82zM1049.3 71.82L1057.96 76.82L1057.96 86.82L1049.3 91.82L1040.64 86.82L1040.64 76.82zM1049.3 161.82L1057.96 166.82L1057.96 176.82L1049.3 181.82L1040.64 176.82L1040.64 166.82zM1057.96 86.82L1066.62 91.82L1066.62 101.82L1057.96 106.82L1049.3 101.82L1049.3 91.82zM1066.62 161.82L1075.28 166.82L1075.28 176.82L1066.62 181.82L1057.96 176.82L1057.96 166.82zM1075.28 -3.18L1083.94 1.82L1083.94 11.82L1075.28 16.82L1066.62 11.82L1066.62 1.82zM1083.94 71.82L1092.6 76.82L1092.6 86.82L1083.94 91.82L1075.28 86.82L1075.28 76.82zM1075.28 206.82L1083.94 211.82L1083.94 221.82L1075.28 226.82L1066.62 221.82L1066.62 211.82zM1118.58 131.82L1127.24 136.82L1127.24 146.82L1118.58 151.82L1109.92 146.82L1109.92 136.82zM1144.57 86.82L1153.23 91.82L1153.23 101.82L1144.57 106.82L1135.91 101.82L1135.91 91.82zM1144.57 146.82L1153.23 151.82L1153.23 161.82L1144.57 166.82L1135.91 161.82L1135.91 151.82zM1153.23 221.82L1161.89 226.82L1161.89 236.82L1153.23 241.82L1144.57 236.82L1144.57 226.82zM1161.89 26.82L1170.55 31.82L1170.55 41.82L1161.89 46.82L1153.23 41.82L1153.23 31.82zM1187.87 131.82L1196.53 136.82L1196.53 146.82L1187.87 151.82L1179.21 146.82L1179.21 136.82zM1179.21 236.82L1187.87 241.82L1187.87 251.82L1179.21 256.82L1170.55 251.82L1170.55 241.82zM1205.19 41.82L1213.85 46.82L1213.85 56.82L1205.19 61.82L1196.53 56.82L1196.53 46.82zM1213.85 -3.18L1222.51 1.82L1222.51 11.82L1213.85 16.82L1205.19 11.82L1205.19 1.82zM1222.51 221.82L1231.17 226.82L1231.17 236.82L1222.51 241.82L1213.85 236.82L1213.85 226.82zM1239.83 11.82L1248.49 16.82L1248.49 26.82L1239.83 31.82L1231.17 26.82L1231.17 16.82zM1257.15 41.82L1265.81 46.82L1265.81 56.82L1257.15 61.82L1248.49 56.82L1248.49 46.82zM1248.49 86.82L1257.15 91.82L1257.15 101.82L1248.49 106.82L1239.83 101.82L1239.83 91.82zM1265.81 26.82L1274.47 31.82L1274.47 41.82L1265.81 46.82L1257.15 41.82L1257.15 31.82zM1274.47 71.82L1283.13 76.82L1283.13 86.82L1274.47 91.82L1265.81 86.82L1265.81 76.82zM1265.81 116.82L1274.47 121.82L1274.47 131.82L1265.81 136.82L1257.15 131.82L1257.15 121.82zM1265.81 146.82L1274.47 151.82L1274.47 161.82L1265.81 166.82L1257.15 161.82L1257.15 151.82zM1274.47 191.82L1283.13 196.82L1283.13 206.82L1274.47 211.82L1265.81 206.82L1265.81 196.82zM1309.12 11.82L1317.78 16.82L1317.78 26.82L1309.12 31.82L1300.45 26.82L1300.45 16.82zM1300.45 176.82L1309.12 181.82L1309.12 191.82L1300.45 196.82L1291.79 191.82L1291.79 181.82zM1300.45 236.82L1309.12 241.82L1309.12 251.82L1300.45 256.82L1291.79 251.82L1291.79 241.82zM1335.1 86.82L1343.76 91.82L1343.76 101.82L1335.1 106.82L1326.44 101.82L1326.44 91.82zM1361.08 11.82L1369.74 16.82L1369.74 26.82L1361.08 31.82L1352.42 26.82L1352.42 16.82zM1352.42 116.82L1361.08 121.82L1361.08 131.82L1352.42 136.82L1343.76 131.82L1343.76 121.82zM1378.4 11.82L1387.06 16.82L1387.06 26.82L1378.4 31.82L1369.74 26.82L1369.74 16.82zM1387.06 -3.18L1395.72 1.82L1395.72 11.82L1387.06 16.82L1378.4 11.82L1378.4 1.82zM1387.06 26.82L1395.72 31.82L1395.72 41.82L1387.06 46.82L1378.4 41.82L1378.4 31.82zM1387.06 86.82L1395.72 91.82L1395.72 101.82L1387.06 106.82L1378.4 101.82L1378.4 91.82zM1421.7 26.82L1430.36 31.82L1430.36 41.82L1421.7 46.82L1413.04 41.82L1413.04 31.82zM1421.7 116.82L1430.36 121.82L1430.36 131.82L1421.7 136.82L1413.04 131.82L1413.04 121.82zM1430.36 161.82L1439.02 166.82L1439.02 176.82L1430.36 181.82L1421.7 176.82L1421.7 166.82zM1421.7 236.82L1430.36 241.82L1430.36 251.82L1421.7 256.82L1413.04 251.82L1413.04 241.82zM1447.68 71.82L1456.34 76.82L1456.34 86.82L1447.68 91.82L1439.02 86.82L1439.02 76.82zM1439.02 206.82L1447.68 211.82L1447.68 221.82L1439.02 226.82L1430.36 221.82L1430.36 211.82zM1465 191.82L1473.66 196.82L1473.66 206.82L1465 211.82L1456.34 206.82L1456.34 196.82zM1473.66 86.82L1482.33 91.82L1482.33 101.82L1473.66 106.82L1465 101.82L1465 91.82zM1473.66 116.82L1482.33 121.82L1482.33 131.82L1473.66 136.82L1465 131.82L1465 121.82zM1473.66 146.82L1482.33 151.82L1482.33 161.82L1473.66 166.82L1465 161.82L1465 151.82zM1499.65 161.82L1508.31 166.82L1508.31 176.82L1499.65 181.82L1490.99 176.82L1490.99 166.82zM1490.99 176.82L1499.65 181.82L1499.65 191.82L1490.99 196.82L1482.33 191.82L1482.33 181.82zM1490.99 236.82L1499.65 241.82L1499.65 251.82L1490.99 256.82L1482.33 251.82L1482.33 241.82zM1508.31 -3.18L1516.97 1.82L1516.97 11.82L1508.31 16.82L1499.65 11.82L1499.65 1.82zM1508.31 236.82L1516.97 241.82L1516.97 251.82L1508.31 256.82L1499.65 251.82L1499.65 241.82zM1534.29 101.82L1542.95 106.82L1542.95 116.82L1534.29 121.82L1525.63 116.82L1525.63 106.82zM1525.63 176.82L1534.29 181.82L1534.29 191.82L1525.63 196.82L1516.97 191.82L1516.97 181.82zM1542.95 -3.18L1551.61 1.82L1551.61 11.82L1542.95 16.82L1534.29 11.82L1534.29 1.82zM1551.61 131.82L1560.27 136.82L1560.27 146.82L1551.61 151.82L1542.95 146.82L1542.95 136.82zM1551.61 191.82L1560.27 196.82L1560.27 206.82L1551.61 211.82L1542.95 206.82L1542.95 196.82zM1560.27 86.82L1568.93 91.82L1568.93 101.82L1560.27 106.82L1551.61 101.82L1551.61 91.82zM1568.93 131.82L1577.59 136.82L1577.59 146.82L1568.93 151.82L1560.27 146.82L1560.27 136.82zM1577.59 146.82L1586.25 151.82L1586.25 161.82L1577.59 166.82L1568.93 161.82L1568.93 151.82zM1586.25 221.82L1594.91 226.82L1594.91 236.82L1586.25 241.82L1577.59 236.82L1577.59 226.82zM1594.91 176.82L1603.57 181.82L1603.57 191.82L1594.91 196.82L1586.25 191.82L1586.25 181.82zM1620.89 191.82L1629.55 196.82L1629.55 206.82L1620.89 211.82L1612.23 206.82L1612.23 196.82zM1638.21 41.82L1646.87 46.82L1646.87 56.82L1638.21 61.82L1629.55 56.82L1629.55 46.82zM1629.55 56.82L1638.21 61.82L1638.21 71.82L1629.55 76.82L1620.89 71.82L1620.89 61.82zM1638.21 221.82L1646.87 226.82L1646.87 236.82L1638.21 241.82L1629.55 236.82L1629.55 226.82zM1646.88 146.82L1655.54 151.82L1655.54 161.82L1646.88 166.82L1638.21 161.82L1638.21 151.82zM1655.54 161.82L1664.2 166.82L1664.2 176.82L1655.54 181.82L1646.88 176.82L1646.88 166.82zM1672.86 131.82L1681.52 136.82L1681.52 146.82L1672.86 151.82L1664.2 146.82L1664.2 136.82zM1690.18 101.82L1698.84 106.82L1698.84 116.82L1690.18 121.82L1681.52 116.82L1681.52 106.82zM1681.52 116.82L1690.18 121.82L1690.18 131.82L1681.52 136.82L1672.86 131.82L1672.86 121.82zM1681.52 236.82L1690.18 241.82L1690.18 251.82L1681.52 256.82L1672.86 251.82L1672.86 241.82zM1698.84 -3.18L1707.5 1.82L1707.5 11.82L1698.84 16.82L1690.18 11.82L1690.18 1.82zM1724.82 71.82L1733.48 76.82L1733.48 86.82L1724.82 91.82L1716.16 86.82L1716.16 76.82zM1716.16 86.82L1724.82 91.82L1724.82 101.82L1716.16 106.82L1707.5 101.82L1707.5 91.82zM1716.16 236.82L1724.82 241.82L1724.82 251.82L1716.16 256.82L1707.5 251.82L1707.5 241.82zM1733.48 -3.18L1742.14 1.82L1742.14 11.82L1733.48 16.82L1724.82 11.82L1724.82 1.82zM1733.48 86.82L1742.14 91.82L1742.14 101.82L1733.48 106.82L1724.82 101.82L1724.82 91.82zM1733.48 206.82L1742.14 211.82L1742.14 221.82L1733.48 226.82L1724.82 221.82L1724.82 211.82zM1750.8 146.82L1759.46 151.82L1759.46 161.82L1750.8 166.82L1742.14 161.82L1742.14 151.82zM1768.12 116.82L1776.78 121.82L1776.78 131.82L1768.12 136.82L1759.46 131.82L1759.46 121.82zM1776.78 131.82L1785.44 136.82L1785.44 146.82L1776.78 151.82L1768.12 146.82L1768.12 136.82zM1768.12 206.82L1776.78 211.82L1776.78 221.82L1768.12 226.82L1759.46 221.82L1759.46 211.82zM1785.44 86.82L1794.1 91.82L1794.1 101.82L1785.44 106.82L1776.78 101.82L1776.78 91.82zM1820.08 26.82L1828.75 31.82L1828.75 41.82L1820.08 46.82L1811.42 41.82L1811.42 31.82zM1828.75 161.82L1837.41 166.82L1837.41 176.82L1828.75 181.82L1820.08 176.82L1820.08 166.82zM1837.41 26.82L1846.07 31.82L1846.07 41.82L1837.41 46.82L1828.75 41.82L1828.75 31.82zM1846.07 161.82L1854.73 166.82L1854.73 176.82L1846.07 181.82L1837.41 176.82L1837.41 166.82zM1837.41 176.82L1846.07 181.82L1846.07 191.82L1837.41 196.82L1828.75 191.82L1828.75 181.82zM1837.41 236.82L1846.07 241.82L1846.07 251.82L1837.41 256.82L1828.75 251.82L1828.75 241.82zM1854.73 86.82L1863.39 91.82L1863.39 101.82L1854.73 106.82L1846.07 101.82L1846.07 91.82zM1863.39 101.82L1872.05 106.82L1872.05 116.82L1863.39 121.82L1854.73 116.82L1854.73 106.82zM1863.39 221.82L1872.05 226.82L1872.05 236.82L1863.39 241.82L1854.73 236.82L1854.73 226.82zM1854.73 236.82L1863.39 241.82L1863.39 251.82L1854.73 256.82L1846.07 251.82L1846.07 241.82zM1898.03 71.82L1906.69 76.82L1906.69 86.82L1898.03 91.82L1889.37 86.82L1889.37 76.82zM1898.03 191.82L1906.69 196.82L1906.69 206.82L1898.03 211.82L1889.37 206.82L1889.37 196.82z" stroke="rgba(0, 0, 0, 0)" stroke-width="2"></path>
+      </g>
+      <defs>
+        <mask id="SvgjsMask1145">
+          <rect width="1900" height="240" fill="white"></rect>
+        </mask>
+      </defs>
+    </svg>
+  </div>
+  <div class="pattern-two">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1940" height="250" preserveAspectRatio="none" viewBox="0 0 1940 250">
+      <g mask="url(&quot;#SvgjsMask1013&quot;)" fill="none">
+        <path d="M769.13 293.26C946.47 293.08 1118.24 204.6 1472.87 204.26 1827.5 203.92 1999.32 116.93 2176.61 116.76" stroke="var(--tb-menu-wrapper-pattern-color)" stroke-width="2"></path>
+        <path d="M890.68 282.49C992.63 277.03 980.82 94.79 1253.34 94.76 1525.87 94.73 1794.87 214.36 1978.67 214.76" stroke="var(--tb-menu-wrapper-pattern-color)" stroke-width="2"></path>
+        <path d="M473.54 295.89C620.82 294.09 753.66 127.17 1037.96 126.92 1322.26 126.67 1320.17 158.17 1602.37 158.17 1884.58 158.17 2025.47 126.93 2166.79 126.92" stroke="var(--tb-menu-wrapper-pattern-color)" stroke-width="2"></path>
+        <path d="M232.02 285.28C471.24 285.18 705.27 194.94 1184.61 194.6 1663.94 194.26 1897 69.87 2137.19 69.6" stroke="var(--tb-menu-wrapper-pattern-color)" stroke-width="2"></path>
+        <path d="M1085 255.41C1227.99 253.41 1357.12 84.18 1630.76 84.12 1904.4 84.06 2038.24 173.82 2176.52 174.12" stroke="var(--tb-menu-wrapper-pattern-color)" stroke-width="2"></path>
+      </g>
+      <defs>
+        <mask id="SvgjsMask1013">
+          <rect width="1940" height="250" fill="white"></rect>
+        </mask>
+      </defs>
+    </svg>
+  </div>
+  <div class="pattern-three">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1900" height="240" preserveAspectRatio="none" viewBox="0 0 1900 240">
+      <g mask="url(&quot;#SvgjsMask1051&quot;)" fill="none">
+        <path d="M62 240L302 0L497 0L257 240z" fill="url(&quot;#SvgjsLinearGradient1052&quot;)"></path>
+        <path d="M372.5 240L612.5 0L734 0L494 240z" fill="url(&quot;#SvgjsLinearGradient1052&quot;)"></path>
+        <path d="M633 240L873 0L1050 0L810 240z" fill="url(&quot;#SvgjsLinearGradient1052&quot;)"></path>
+        <path d="M974.5 240L1214.5 0L1291 0L1051 240z" fill="url(&quot;#SvgjsLinearGradient1052&quot;)"></path>
+        <path d="M1842 240L1602 0L1330.5 0L1570.5 240z" fill="url(&quot;#SvgjsLinearGradient1053&quot;)"></path>
+        <path d="M1562.5 240L1322.5 0L883 0L1123 240z" fill="url(&quot;#SvgjsLinearGradient1053&quot;)"></path>
+        <path d="M1266 240L1026 0L645 0L885 240z" fill="url(&quot;#SvgjsLinearGradient1053&quot;)"></path>
+        <path d="M917.5 240L677.5 0L350.5 0L590.5 240z" fill="url(&quot;#SvgjsLinearGradient1053&quot;)"></path>
+        <path d="M1703.799962862234 240L1900 43.799962862234054L1900 240z" fill="url(&quot;#SvgjsLinearGradient1052&quot;)"></path>
+        <path d="M0 240L196.20003713776595 240L 0 43.799962862234054z" fill="url(&quot;#SvgjsLinearGradient1053&quot;)"></path>
+      </g>
+      <defs>
+        <mask id="SvgjsMask1051">
+          <rect width="1900" height="240" fill="white"></rect>
+        </mask>
+        <lineargradient x1="0%" y1="100%" x2="100%" y2="0%" id="SvgjsLinearGradient1052">
+          <stop stop-color="var(--tb-menu-wrapper-pattern-color)" offset="0"></stop>
+          <stop stop-opacity="0" stop-color="var(--tb-menu-wrapper-pattern-color)" offset="0.66"></stop>
+        </lineargradient>
+        <lineargradient x1="100%" y1="100%" x2="0%" y2="0%" id="SvgjsLinearGradient1053">
+          <stop stop-color="var(--tb-menu-wrapper-pattern-color)" offset="0"></stop>
+          <stop stop-opacity="0" stop-color="var(--tb-menu-wrapper-pattern-color)" offset="0.66"></stop>
+        </lineargradient>
+      </defs>
+    </svg>
+  </div>
+</div>
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+
+        <div class="main-content">
+            <div class="page-content">
+
+                                
+                <div class="container-fluid">
+
+                    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> -->
+<style>
+    .coin-option {
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .coin-option:hover {
+        border-color: #007bff;
+        background-color: #f8f9fa;
+    }
+
+    .coin-option.selected {
+        border-color: #007bff;
+        background-color: #e7f3ff;
+    }
+
+    .coin-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .btc {
+        background: #f7931a;
+    }
+
+    .eth {
+        background: #627eea;
+    }
+
+    .ltc {
+        background: #bfbbbb;
+    }
+
+    .doge {
+        background: #c2a633;
+    }
+
+    .chain-option {
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .chain-option:hover {
+        border-color: #007bff;
+        background-color: #f8f9fa;
+    }
+
+    .chain-option.selected {
+        border-color: #007bff;
+        background-color: #e7f3ff;
+    }
+
+    .primary-accent {
+        color: #865ffc !important;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4><i class="fas fa-plus-circle me-2"></i>Create New Crypto Wallet</h4>
+
+
+                </div>
+                <div class="card-body">
+                    
+                    
+                    <form action="https://capitaltrademarket.com/server/wallet/create" method="post" accept-charset="utf-8" data-anti-phishing-live-protection="1778086546375">
+<input type="hidden" name="csrf_test_name" value="70e1d536359a2b25b28422b80c672317">                                                                                                                      
+
+                    <div class="mb-4">
+                        <label for="wallet_name" class="form-label">Wallet Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="wallet_name" name="wallet_name" placeholder="Enter a name for your wallet" value="" required="">
+                        <div class="form-text">Choose a unique name to identify this wallet</div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Select Cryptocurrency <span class="text-danger">*</span></label>
+                        <div class="row">
+
+                            
+                                <div class="col-md-6">
+                                    <div class="card coin-option" data-coin="btc">
+                                        <div class="d-flex align-items-center">
+                                            <div class="coin-icon me-3">
+                                                <img src="./Create_files/btc.png" alt="BTC" class="coin-icon">
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">btc</h6>
+                                                <small class="text-muted">The original cryptocurrency</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                                <div class="col-md-6">
+                                    <div class="card coin-option" data-coin="eth">
+                                        <div class="d-flex align-items-center">
+                                            <div class="coin-icon me-3">
+                                                <img src="./Create_files/eth.png" alt="ETH" class="coin-icon">
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">eth</h6>
+                                                <small class="text-muted">The original cryptocurrency</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                                <div class="col-md-6">
+                                    <div class="card coin-option" data-coin="usdt">
+                                        <div class="d-flex align-items-center">
+                                            <div class="coin-icon me-3">
+                                                <img src="./Create_files/usdt.png" alt="USDT" class="coin-icon">
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">usdt</h6>
+                                                <small class="text-muted">The original cryptocurrency</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                                <div class="col-md-6">
+                                    <div class="card coin-option" data-coin="trx">
+                                        <div class="d-flex align-items-center">
+                                            <div class="coin-icon me-3">
+                                                <img src="./Create_files/trx.png" alt="TRX" class="coin-icon">
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">trx</h6>
+                                                <small class="text-muted">The original cryptocurrency</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                                <div class="col-md-6">
+                                    <div class="card coin-option" data-coin="sol">
+                                        <div class="d-flex align-items-center">
+                                            <div class="coin-icon me-3">
+                                                <img src="./Create_files/sol.png" alt="SOL" class="coin-icon">
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">sol</h6>
+                                                <small class="text-muted">The original cryptocurrency</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                                <div class="col-md-6">
+                                    <div class="card coin-option" data-coin="ltc">
+                                        <div class="d-flex align-items-center">
+                                            <div class="coin-icon me-3">
+                                                <img src="./Create_files/ltc.png" alt="LTC" class="coin-icon">
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">ltc</h6>
+                                                <small class="text-muted">The original cryptocurrency</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                                <div class="col-md-6">
+                                    <div class="card coin-option" data-coin="xrp">
+                                        <div class="d-flex align-items-center">
+                                            <div class="coin-icon me-3">
+                                                <img src="./Create_files/xrp.png" alt="XRP" class="coin-icon">
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">xrp</h6>
+                                                <small class="text-muted">The original cryptocurrency</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                                <div class="col-md-6">
+                                    <div class="card coin-option" data-coin="bch">
+                                        <div class="d-flex align-items-center">
+                                            <div class="coin-icon me-3">
+                                                <img src="./Create_files/bch.png" alt="BCH" class="coin-icon">
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">bch</h6>
+                                                <small class="text-muted">The original cryptocurrency</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                            <!-- <div class="col-md-6">
+                                <div class="card coin-option" data-coin="btc">
+                                    <div class="d-flex align-items-center">
+                                        <div class="coin-icon btc me-3">
+                                            <img src="https://capitaltrademarket.com/server/uploads/color/btc.png" alt="Bitcoin" class="coin-icon">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Bitcoin</h6>
+                                            <small class="text-muted">The original cryptocurrency</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card coin-option" data-coin="eth">
+                                    <div class="d-flex align-items-center">
+                                        <div class="coin-icon eth me-3">
+                                            <img src="https://capitaltrademarket.com/server/uploads/color/eth.png" alt="Ethereum" class="coin-icon">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Ethereum</h6>
+                                            <small class="text-muted">Smart contract platform</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card coin-option" data-coin="ltc">
+                                    <div class="d-flex align-items-center">
+                                        <div class="coin-icon ltc me-3">
+                                            <img src="https://capitaltrademarket.com/server/uploads/color/ltc.png" alt="Litecoin" class="coin-icon">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Litecoin</h6>
+                                            <small class="text-muted">Faster Bitcoin alternative</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card coin-option" data-coin="doge">
+                                    <div class="d-flex align-items-center">
+                                        <div class="coin-icon doge me-3">
+                                            <img src="https://capitaltrademarket.com/server/uploads/color/doge.png" alt="Dogecoin" class="coin-icon">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Dogecoin</h6>
+                                            <small class="text-muted">The fun cryptocurrency</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <input type="hidden" id="coin_type" name="coin_type" value="" required="">
+                    </div>
+
+                    <div class="mb-4 d-none">
+                        <label class="form-label">Network Type <span class="text-danger">*</span></label>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="card chain-option selected" data-chain="main">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-globe text-success me-3 fa-2x"></i>
+                                        <div>
+                                            <h6 class="mb-1 primary-accent">Mainnet</h6>
+                                            <small class="text-muted">Real cryptocurrency network</small>
+                                            <div class="badge bg-danger mt-1">Real Money!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card chain-option" data-chain="test3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-flask text-warning me-3 fa-2x"></i>
+                                        <div>
+                                            <h6 class="mb-1 primary-accent">Testnet</h6>
+                                            <small class="text-muted">For testing and development</small>
+                                            <div class="badge bg-warning text-dark mt-1">Recommended</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <input type="hidden" id="chain_type" name="chain_type" value="main" required="">
+                        <div class="form-text">
+                            <strong>Important:</strong> Use Testnet for practice and trade and investment simulation.
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Security Notice:</strong> We ensure your wallet's private keys are encrypted and stored securely.
+                        Never share your private key with anyone. We recommend backing up your wallet information
+                        in a secure location.
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="https://capitaltrademarket.com/server/wallet" class="btn btn-dark">
+                            <i class="fas fa-arrow-left"></i> Back to Wallets
+                        </a>
+                        <button type="submit" class="btn btn-primary" id="createWalletBtn">
+                            <i class="fas fa-plus"></i> Create Wallet
+                        </button>
+                    </div>
+
+                    </form>                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Loading Modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="spinner-border text-primary mb-3" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p>Generating your secure wallet...</p>
+                <small class="text-muted">This may take a few moments</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./Create_files/bootstrap.bundle.min.js.download"></script>
+<script src="./Create_files/jquery.min.js.download"></script>
+
+<script>
+    $(document).ready(function() {
+        // Coin selection
+        $('.coin-option').click(function() {
+            $('.coin-option').removeClass('selected');
+            $(this).addClass('selected');
+            $('#coin_type').val($(this).data('coin'));
+        });
+
+        // Chain selection
+        $('.chain-option').click(function() {
+            $('.chain-option').removeClass('selected');
+            $(this).addClass('selected');
+            $('#chain_type').val($(this).data('chain'));
+        });
+
+        // Set default selections
+        $('[data-chain="main"]').addClass('selected');
+
+        // Pre-select values if form was submitted with errors
+        
+        
+        // Form submission with loading
+        $('form').submit(function() {
+            const coinType = $('#coin_type').val();
+            const chainType = $('#chain_type').val();
+            const walletName = $('#wallet_name').val().trim();
+
+            if (!walletName) {
+                alert('Please enter a wallet name');
+                return false;
+            }
+
+            if (!coinType) {
+                alert('Please select a cryptocurrency');
+                return false;
+            }
+
+            if (!chainType) {
+                alert('Please select a network type');
+                return false;
+            }
+
+            // Show loading modal
+            const modal = new bootstrap.Modal(document.getElementById('loadingModal'));
+            modal.show();
+
+            // Disable submit button
+            $('#createWalletBtn').prop('disabled', true);
+
+            return true;
+        });
+
+        // Validate wallet name as user types
+        $('#wallet_name').on('input', function() {
+            const name = $(this).val().trim();
+            const btn = $('#createWalletBtn');
+
+            if (name.length < 3) {
+                btn.prop('disabled', true);
+            } else {
+                btn.prop('disabled', false);
+            }
+        });
+
+        // Network type warning
+        $('[data-chain="main"]').click(function() {
+            if (confirm('You are selecting MAINNET which uses real cryptocurrency. Are you sure you want to proceed? For testing purposes, we recommend using TESTNET.')) {
+                // User confirmed
+            } else {
+                // User cancelled, select testnet instead
+                $('.chain-option').removeClass('selected');
+                $('[data-chain="test3"]').addClass('selected');
+                $('#chain_type').val('test3');
+            }
+        });
+    });
+</script>
+                </div>
+            </div>
+            <!-- end inner page load -->
+
+
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 text-center text-sm-start">
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>2026
+                            © Capital Trade market.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                <!-- brand holder -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    
+    <!-- END layout-wrapper -->
+
+        
+    <!-- JAVASCRIPT -->
+    <script src="./Create_files/bootstrap.bundle.min(1).js.download"></script>
+    <script src="./Create_files/simplebar.min.js.download"></script>
+    <script src="./Create_files/plugins.js.download"></script><script src="./Create_files/toastify.js.download"></script>
+<script src="./Create_files/flatpickr.min.js.download"></script>
+<script src="./Create_files/choices.min.js.download"></script>
+
+
+    <!-- list js-->
+    <script src="./Create_files/list.min.js.download"></script>
+    <script src="./Create_files/list.pagination.min.js.download"></script>
+
+    <!-- apexcharts -->
+    <script src="./Create_files/apexcharts.min.js.download"></script>
+    <!-- Sweet Alerts js -->
+    <script src="./Create_files/sweetalert2.min.js.download"></script>
+
+    <!-- Sweet alert init js-->
+    <script src="./Create_files/sweetalerts.init.js.download"></script>
+
+    
+    
+
+
+    <!-- App js -->
+    <script src="./Create_files/app.js.download"></script>
+    <script src="./Create_files/clipboard.js.download"></script>
+
+
+
+<svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg></body></html>

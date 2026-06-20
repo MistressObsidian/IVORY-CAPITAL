@@ -1,0 +1,29 @@
+$(document).ready(function () {
+  $(document).on("click", ".copyToClipboard", function () {
+    var copyThisText = $(".copyToClipboard").data("copy");
+    navigator.clipboard.writeText(copyThisText).then(
+      function () {
+        window.alert("Success! copied to your clipboard");
+      },
+      function () {
+        window.alert("Opps! Your browser does not support the Clipboard API");
+      }
+    );
+  });
+
+  $(document).on("click", ".swalCopyToClipboard", function () {
+    var copyThisText = $(".swalCopyToClipboard").data("copy");
+    navigator.clipboard.writeText(copyThisText).then(
+      Swal.fire({
+        icon: "success",
+        title: "Copied to clipboard",
+        customClass: {
+          confirmButton: "btn btn-primary w-xs mt-2",
+        },
+        confirmButtonText: "Done",
+        buttonsStyling: !1,
+        showCloseButton: !0,
+      })
+    );
+  });
+});
